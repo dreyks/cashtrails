@@ -1,3 +1,16 @@
-require './app'
+require 'tilt/haml' # get rid of tilt warning
+require 'bundler'
+require 'bundler/setup'
+Bundler.require
 
-run CashTrails
+require './app'
+require './assets'
+
+
+map Assets.settings.assets_prefix do
+  run Assets.sprockets
+end
+# main app
+map '/' do
+  run CashTrails::App
+end

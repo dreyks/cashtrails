@@ -1,18 +1,25 @@
-require 'sinatra/base'
-require 'sinatra/activerecord'
+module CashTrails
+  class App < Sinatra::Base
+    register Sinatra::ActiveRecordExtension
 
-class CashTrails < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
+    configure do
+      set :database, adapter: 'sqlite3', database: 'db/db.sqlite3'
+    end
 
-  configure do
-    set :database, adapter: 'sqlite3', database: 'db/db.sqlite3'
-  end
+    configure :development do
+      register Sinatra::Reloader
+    end
 
-  get '/' do
-    'test'
-  end
+    helpers do
+      include Sprockets::Helpers
+    end
 
-  get '/upload' do
-    haml :upload
+    get '/' do
+      haml :index
+    end
+
+    get '/upload' do
+      haml :upload
+    end
   end
 end

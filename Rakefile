@@ -9,12 +9,12 @@ namespace :assets do
   desc "Precompile assets"
   task :precompile do
     environment = Assets.sprockets
-    manifest = Sprockets::Manifest.new(environment.index, Assets.assets_path)
-    manifest.compile(Assets.assets_precompile)
+    manifest = Sprockets::Manifest.new(environment.index, Assets.target_path)
+    manifest.compile(Assets.precompile)
   end
 
   desc "Clean assets"
   task :clean do
-    FileUtils.rm_rf(Assets.assets_path)
+    FileUtils.rm_rf(Assets.target_path)
   end
 end

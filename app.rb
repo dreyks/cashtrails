@@ -18,6 +18,10 @@ module CashTrails
       haml :index
     end
 
+    get '/accounts' do
+      haml :accounts
+    end
+
     get '/upload' do
       haml :upload
     end

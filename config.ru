@@ -7,7 +7,7 @@ require './app'
 require './assets'
 
 # TODO: restrict only to dev
-map Assets.settings.assets_prefix do
+map Assets.settings.prefix do
   run Assets.sprockets
 end
 # main app

@@ -10,6 +10,7 @@
 /tmp/
 db/*.cashtrails
 db/*.sqlite3
+public/assets
 
 ## Specific to RubyMotion:
 .dat*

@@ -6,7 +6,7 @@ Bundler.require
 require './app'
 require './assets'
 
-
+# TODO: restrict only to dev
 map Assets.settings.assets_prefix do
   run Assets.sprockets
 end

@@ -12,6 +12,7 @@ db/*.cashtrails
 db/*.sqlite3
 db/*.db
 public/assets
+spring
 
 ## Specific to RubyMotion:
 .dat*

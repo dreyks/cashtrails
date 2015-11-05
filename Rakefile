@@ -1,21 +1,6 @@
-require 'bundler'
-Bundler.require
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-require './app'
-require './assets'
-require 'sinatra/activerecord/rake'
+require File.expand_path('../config/application', __FILE__)
 
-namespace :assets do
-  desc "Precompile assets"
-  task :precompile do
-    environment = Assets.sprockets
-    manifest = Sprockets::Manifest.new(environment.index, Assets.target_path)
-    # manifest.clean(1)
-    manifest.compile(Assets.precompile)
-  end
-
-  desc "Clean assets"
-  task :clean do
-    FileUtils.rm_rf(Assets.target_path)
-  end
-end
+Rails.application.load_tasks

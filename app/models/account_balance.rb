@@ -1,4 +1,4 @@
-class AccountBalance < ActiveRecord::Base
+class AccountBalance < CashTrailsModel
   self.table_name = 'accountBalances'
 
   belongs_to :currency, foreign_key: :currencyID

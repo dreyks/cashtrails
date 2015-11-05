@@ -1,4 +1,4 @@
-class RecordsTag < ActiveRecord::Base
+class RecordsTag < CashTrailsModel
   self.table_name = 'recordTags'
 
   belongs_to :record, foreign_key: :recordID

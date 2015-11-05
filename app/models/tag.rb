@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Tag < CashTrailsModel
   def to_s
     name
   end

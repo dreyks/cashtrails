@@ -2099,3 +2099,352 @@ Processing by RecordsController#index as HTML
   [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "records"
   Rendered records/index.haml within layouts/application (74.3ms)
 Completed 200 OK in 109ms (Views: 98.7ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 15:44:22 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (4.4ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.3ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.3ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (120.4ms)
+Completed 200 OK in 554ms (Views: 468.4ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 15:44:24 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.8ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.3ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.2ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (24.6ms)
+Completed 200 OK in 97ms (Views: 94.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 15:44:25 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.4ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.3ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.2ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (16.5ms)
+Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:34 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (7.6ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (1.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (309.7ms)
+Completed 200 OK in 354ms (Views: 330.9ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:35 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (8.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (101.3ms)
+Completed 200 OK in 131ms (Views: 118.5ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:36 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (12.6ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (96.4ms)
+Completed 200 OK in 123ms (Views: 106.9ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:37 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (11.7ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (104.2ms)
+Completed 200 OK in 131ms (Views: 116.2ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:38 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (9.3ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.2ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (96.1ms)
+Completed 200 OK in 127ms (Views: 114.3ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:39 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (7.3ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.3ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (83.2ms)
+Completed 200 OK in 121ms (Views: 110.7ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:40 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (12.6ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (95.1ms)
+Completed 200 OK in 136ms (Views: 119.7ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 15:44:59 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (7.5ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.2ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (83.8ms)
+Completed 200 OK in 114ms (Views: 102.7ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 15:47:08 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.2ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.2ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (16.8ms)
+Completed 200 OK in 53ms (Views: 49.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 15:47:10 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.5ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.3ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (18.4ms)
+Completed 200 OK in 56ms (Views: 53.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:26:58 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.0ms)
+
+ActiveRecord::AdapterNotSpecified ('cash_trails_sqlite' database is not configured. Available: ["default", "development", "test"]):
+  app/models/cash_trails_model.rb:2:in `<class:CashTrailsModel>'
+  app/models/cash_trails_model.rb:1:in `<top (required)>'
+  app/models/account.rb:1:in `<top (required)>'
+  app/controllers/accounts_controller.rb:3:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (69.0ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:27:22 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 4.7ms)
+
+ActiveRecord::StatementInvalid (Could not find table 'cash_trails_models'):
+  app/controllers/accounts_controller.rb:3:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.4ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:29:55 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (1.6ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+PG::UndefinedTable: ERROR:  relation "accounts" does not exist
+LINE 1: SELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."ac...
+                                 ^
+: SELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC
+  Rendered accounts/index.haml within layouts/application (20.5ms)
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 1.6ms)
+
+ActionView::Template::Error (PG::UndefinedTable: ERROR:  relation "accounts" does not exist
+LINE 1: SELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."ac...
+                                 ^
+: SELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC):
+    1: %h1.page-header Accounts
+    2: .table-responsive
+    3:   %table.table.table-striped
+    4:     - @accounts.group_by(&:accountGroupIDOrInvalid).each do |_, accounts|
+    5:       %tr
+    6:         %th{colspan: 2, class: 'text-center'}= accounts.first.account_group.name
+    7:       %tr
+  app/views/accounts/index.haml:4:in `_app_views_accounts_index_haml___3737474405383957416_68697540'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (26.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (78.4ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:30:27 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `establish_connection' for Object:Class):
+  app/models/concerns/cash_trails_model.rb:5:in `block in <module:CashTrailsModel>'
+  app/models/account.rb:2:in `include'
+  app/models/account.rb:2:in `<top (required)>'
+  app/controllers/accounts_controller.rb:3:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.8ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:32:22 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `establish_connection' for Object:Class):
+  app/models/concerns/cash_trails_model.rb:5:in `block in <module:CashTrailsModel>'
+  app/models/account.rb:2:in `include'
+  app/models/account.rb:2:in `<top (required)>'
+  app/controllers/accounts_controller.rb:3:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.5ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:36:17 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (9.8ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (3.0ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (1.1ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (1.2ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (201.2ms)
+Completed 200 OK in 627ms (Views: 493.0ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:36:23 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.2ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.3ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (14.3ms)
+Completed 200 OK in 47ms (Views: 44.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 16:36:26 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (14.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (2.2ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (1.5ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (1.1ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (299.6ms)
+Completed 200 OK in 364ms (Views: 328.9ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 16:36:28 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (9.3ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (1.1ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.4ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (1.1ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (137.1ms)
+Completed 200 OK in 186ms (Views: 171.7ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:36:30 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.3ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.3ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (18.4ms)
+Completed 200 OK in 49ms (Views: 46.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/accounts" for 193.84.72.90 at 2015-11-05 16:36:53 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AccountsController#index as HTML
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts"  ORDER BY "accounts"."accountGroupIDOrInvalid" ASC, "accounts"."accountOrder" ASC[0m
+  [1m[35mAccountBalance Load (0.3ms)[0m  SELECT "accountBalances".* FROM "accountBalances" WHERE "accountBalances"."accountIDOrInvalid" IN (6, 7, 3, 9, 8, 4, 1, 2, 5)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13, 91)[0m
+  [1m[35mAccountGroup Load (0.3ms)[0m  SELECT "accountGroups".* FROM "accountGroups" WHERE "accountGroups"."accountGroupID" IN (1, 2)
+  Rendered accounts/index.haml within layouts/application (18.8ms)
+Completed 200 OK in 54ms (Views: 50.6ms | ActiveRecord: 1.4ms)

@@ -1,2 +1,2 @@
-class Currency < ActiveRecord::Base
+class Currency < CashTrailsModel
 end

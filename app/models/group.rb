@@ -1,4 +1,4 @@
-class Group < ActiveRecord::Base
+class Group < CashTrailsModel
   def to_s
     name
   end

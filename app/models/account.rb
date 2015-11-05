@@ -1,4 +1,4 @@
-class Account < ActiveRecord::Base
+class Account < CashTrailsModel
   has_many :balances, class_name: 'AccountBalance', foreign_key: :accountIDOrInvalid
   belongs_to :account_group, foreign_key: :accountGroupIDOrInvalid
 

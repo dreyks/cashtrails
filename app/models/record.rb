@@ -1,4 +1,4 @@
-class Record < ActiveRecord::Base
+class Record < CashTrailsModel
   KIND_EXPENSE = 0
   KIND_INCOME = 1
   KIND_TRANSFER = 2

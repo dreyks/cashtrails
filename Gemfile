@@ -62,5 +62,3 @@ group :tools do
   gem 'rubocop'
   gem 'guard-rubocop'
 end
-
-ruby '2.2.3'

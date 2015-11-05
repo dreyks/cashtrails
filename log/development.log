@@ -1258,3 +1258,482 @@ Processing by RecordsController#index as HTML
   [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
   Rendered records/index.haml within layouts/application (119.4ms)
 Completed 200 OK in 149ms (Views: 134.6ms | ActiveRecord: 13.1ms)
+  [1m[36mRecord Load (0.7ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+  [1m[36mRecord Load (0.5ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+  [1m[36mRecord Load (0.6ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+  [1m[35mTag Load (3.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1639]]
+  [1m[36mRecord Load (0.4ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1639]]
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:33:33 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (51.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mAccount Load (0.4ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (0)[0m
+  [1m[35mCurrency Load (1.1ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (274.3ms)
+Completed 200 OK in 745ms (Views: 611.1ms | ActiveRecord: 57.7ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:33:42 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (11.3ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mAccount Load (0.2ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (0)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (51.6ms)
+Completed 200 OK in 81ms (Views: 66.9ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:38:15 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (9.2ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mTag Load (2.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1716]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1714]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1715]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1713]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1712]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1711]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1710]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1708]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1707]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1706]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1705]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1709]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1704]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1703]]
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1702]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1701]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1700]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1699]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1698]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1697]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1696]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1695]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1694]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1693]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1692]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (247.7ms)
+Completed 200 OK in 301ms (Views: 270.5ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:38:18 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (7.5ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.2ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1716]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1714]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1715]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1713]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1712]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1711]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1710]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1708]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1707]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1706]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1705]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1709]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1704]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1703]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1702]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1701]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1700]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1699]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1698]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1697]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1696]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1695]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1694]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1693]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1692]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (259.7ms)
+Completed 200 OK in 325ms (Views: 312.8ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:39:27 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (9.2ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.6ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.4ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.4ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1716]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1714]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1715]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1713]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1712]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1711]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1710]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1708]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1707]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1706]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1705]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1709]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1704]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1703]]
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1702]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1701]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1700]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1699]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1698]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1697]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1696]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1695]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1694]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?  [["recordID", 1693]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "recordTags" ON "tags"."tagID" = "recordTags"."tagIDOrInvalid" WHERE "recordTags"."recordID" = ?[0m  [["recordID", 1692]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (209.3ms)
+Completed 200 OK in 257ms (Views: 238.7ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:41:27 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (13.9ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (312.2ms)
+Completed 200 OK in 378ms (Views: 341.2ms | ActiveRecord: 19.3ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:41:31 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[35mRecord Load (11.0ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mRecordsTag Load (0.5ms)[0m  SELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (111.9ms)
+Completed 200 OK in 150ms (Views: 135.6ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/records?page=2" for 193.84.72.90 at 2015-11-05 14:41:48 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mRecord Load (12.4ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 25[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (7, 6, 4, 3)
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 3)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13, 121)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13, 121, 20)
+  [1m[36mRecordsTag Load (0.7ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1690, 1689, 1688, 1687, 1691, 1686, 1685, 1684, 1683, 1681, 1673, 1675, 1674, 1676, 1602, 1672, 1679, 1678, 1677, 1680, 1671, 1670, 1669, 1668, 1667)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (10, 34, 6, 15, 9, 13, 4, 8, 19, 12, 14)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (182.1ms)
+Completed 200 OK in 223ms (Views: 205.0ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/records?page=3" for 193.84.72.90 at 2015-11-05 14:41:54 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[35mRecord Load (14.3ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 50
+  [1m[36mAccount Load (0.4ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (7, 6)[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 8, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (121)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20)[0m
+  [1m[35mRecordsTag Load (0.6ms)[0m  SELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1666, 1665, 1664, 1663, 1662, 1661, 1660, 1659, 1658, 1657, 1656, 1601, 1655, 1600, 1599, 1654, 1653, 1652, 1651, 1650, 1598, 1649, 1648, 1647, 1597)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (4, 13, 10, 5, 29, 17, 8, 27, 33, 12, 9, 20, 28)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (249.7ms)
+Completed 200 OK in 286ms (Views: 267.4ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:42:43 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (12.5ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (110.1ms)
+Completed 200 OK in 146ms (Views: 129.7ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/records?page=69" for 193.84.72.90 at 2015-11-05 14:42:48 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"69"}
+  [1m[35mRecord Load (13.3ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 1700
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (8, 9)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 91)
+  [1m[36mRecordsTag Load (0.2ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1726, 1727)[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (0)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (53.9ms)
+Completed 200 OK in 186ms (Views: 169.6ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/records?page=68" for 193.84.72.90 at 2015-11-05 14:42:50 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"68"}
+  [1m[35mRecord Load (11.2ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 1675
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 1, 2, 3, 4, 5, 7)[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 121, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (21, 22, 20, 19, 18, 17, 16, 15, 13, 14, 9, 8, 7, 11, 10, 12, 1717, 1718, 1719, 1720, 1721, 1722, 1723, 1724, 1725)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (2, 9, 8, 6, 4, 5, 7, 0)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (105.9ms)
+Completed 200 OK in 141ms (Views: 126.5ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:42:53 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[35mRecord Load (12.0ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mRecordsTag Load (0.6ms)[0m  SELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (108.2ms)
+Completed 200 OK in 145ms (Views: 128.6ms | ActiveRecord: 14.3ms)
+
+
+Started GET "/records?page=2" for 193.84.72.90 at 2015-11-05 14:43:05 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mRecord Load (11.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 25[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (7, 6, 4, 3)
+  [1m[36mAccount Load (0.2ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 3)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13, 121)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13, 121, 20)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1690, 1689, 1688, 1687, 1691, 1686, 1685, 1684, 1683, 1681, 1673, 1675, 1674, 1676, 1602, 1672, 1679, 1678, 1677, 1680, 1671, 1670, 1669, 1668, 1667)[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (10, 34, 6, 15, 9, 13, 4, 8, 19, 12, 14)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (126.3ms)
+Completed 200 OK in 161ms (Views: 144.9ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:45:15 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[35mRecord Load (9.9ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0
+  [1m[36mAccount Load (0.2ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mRecordsTag Load (0.4ms)[0m  SELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (172.0ms)
+Completed 200 OK in 216ms (Views: 190.4ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/records?page=2" for 193.84.72.90 at 2015-11-05 14:45:20 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mRecord Load (11.6ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 25[0m
+  [1m[35mAccount Load (0.6ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (7, 6, 4, 3)
+  [1m[36mAccount Load (0.3ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 3)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13, 121)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13, 121, 20)
+  [1m[36mRecordsTag Load (0.5ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1690, 1689, 1688, 1687, 1691, 1686, 1685, 1684, 1683, 1681, 1673, 1675, 1674, 1676, 1602, 1672, 1679, 1678, 1677, 1680, 1671, 1670, 1669, 1668, 1667)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (10, 34, 6, 15, 9, 13, 4, 8, 19, 12, 14)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "records"[0m
+  Rendered records/index.haml within layouts/application (118.4ms)
+Completed 200 OK in 184ms (Views: 168.0ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:45:24 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[35mRecord Load (8.3ms)[0m  SELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)[0m
+  [1m[35mRecordsTag Load (0.6ms)[0m  SELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (93.4ms)
+Completed 200 OK in 127ms (Views: 114.7ms | ActiveRecord: 10.9ms)
+  [1m[36mRecord Load (2.2ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:47:08 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (14.2ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.7ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (1.5ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (279.2ms)
+Completed 200 OK in 338ms (Views: 299.8ms | ActiveRecord: 22.7ms)
+  [1m[36mRecord Load (0.8ms)[0m  [1mSELECT  "records".* FROM "records" WHERE "records"."recordID" = ? LIMIT 1[0m  [["recordID", 1639]]
+  [1m[35mGroup Load (1.8ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:47:46 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (18.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (10.8ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (1.6ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.3ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.2ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35mCACHE (5.3ms)[0m  SELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1  [["groupID", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "groups".* FROM "groups" WHERE "groups"."groupID" = ? LIMIT 1[0m  [["groupID", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (567.9ms)
+Completed 200 OK in 1096ms (Views: 945.5ms | ActiveRecord: 42.8ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:48:04 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (13.6ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.3ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  Rendered records/index.haml within layouts/application (164.9ms)
+Completed 500 Internal Server Error in 182ms (ActiveRecord: 18.5ms)
+
+ActionView::Template::Error (Association named 'groups' was not found on Record; perhaps you misspelled it?):
+     7:       %th Amount
+     8:       %th Tags
+     9:       %th Group
+    10:     - @records.each do |record|
+    11:       %tr
+    12:         %td= record.occured_at.strftime('%e %b %Y %H:%M')
+    13:         %td
+  app/views/records/index.haml:10:in `_app_views_records_index_haml___1240113135835738290_70156097132180'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.8ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:48:05 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (8.8ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.5ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.3ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  Rendered records/index.haml within layouts/application (50.1ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 10.8ms)
+
+ActionView::Template::Error (Association named 'groups' was not found on Record; perhaps you misspelled it?):
+     7:       %th Amount
+     8:       %th Tags
+     9:       %th Group
+    10:     - @records.each do |record|
+    11:       %tr
+    12:         %td= record.occured_at.strftime('%e %b %Y %H:%M')
+    13:         %td
+  app/views/records/index.haml:10:in `_app_views_records_index_haml___1240113135835738290_70156078381560'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (20.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.2.3/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (64.3ms)
+
+
+Started GET "/records" for 193.84.72.90 at 2015-11-05 14:48:12 +0000
+Cannot render console from 193.84.72.90! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by RecordsController#index as HTML
+  [1m[36mRecord Load (9.3ms)[0m  [1mSELECT  "records".* FROM "records"  ORDER BY "records"."gmtDate" DESC, "records"."gmtTime" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mAccount Load (0.3ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."accountID" IN (6, 7)
+  [1m[36mCurrency Load (0.2ms)[0m  [1mSELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (20, 13)[0m
+  [1m[35mCurrency Load (0.2ms)[0m  SELECT "currencies".* FROM "currencies" WHERE "currencies"."currencyID" IN (13)
+  [1m[36mRecordsTag Load (0.6ms)[0m  [1mSELECT "recordTags".* FROM "recordTags" WHERE "recordTags"."recordID" IN (1716, 1714, 1715, 1713, 1712, 1711, 1710, 1708, 1707, 1706, 1705, 1709, 1704, 1703, 1702, 1701, 1700, 1699, 1698, 1697, 1696, 1695, 1694, 1693, 1692)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."tagID" IN (28, 6, 2, 10, 12, 4, 14, 11, 20, 19)
+  [1m[36mGroup Load (0.2ms)[0m  [1mSELECT "groups".* FROM "groups" WHERE "groups"."groupID" IN (1)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "records"
+  Rendered records/index.haml within layouts/application (201.5ms)
+Completed 200 OK in 253ms (Views: 220.4ms | ActiveRecord: 14.4ms)

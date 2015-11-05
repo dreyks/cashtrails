@@ -17,5 +17,8 @@
           = record.source_amount_text
           = "=> #{record.target_amount_text}" if record.target_amount_text
         %td
+          - record.tags.each do |tag|
+            %p= tag
         %td
+          = record.group.presence
 = paginate @records

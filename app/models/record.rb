@@ -4,6 +4,9 @@ class Record < ActiveRecord::Base
   KIND_TRANSFER = 2
   KIND_ADJUSTMENT = 3
 
+  # fields where 0 has to be treated as +nil+
+  NILLED_ZEROS = [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid]
+
   belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
   belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid
 
@@ -11,6 +14,11 @@ class Record < ActiveRecord::Base
   belongs_to :source_currency_foreign, class_name: 'Currency', foreign_key: :currency2IDOrInvalid
   belongs_to :target_currency,         class_name: 'Currency', foreign_key: :currency3IDOrInvalid
   belongs_to :target_currency_foreign, class_name: 'Currency', foreign_key: :currency4IDOrInvalid
+
+  has_many :records_tags, foreign_key: :recordID
+  has_many :tags, through: :records_tags
+
+  belongs_to :group, foreign_key: :groupIDOrInvalid
 
   after_initialize  :convert_zeros_to_nils
   before_save       :convert_nils_to_zeros
@@ -40,7 +48,7 @@ class Record < ActiveRecord::Base
   private
 
   def convert_zeros_to_nils
-    [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid].each do |c|
+    NILLED_ZEROS.each do |c|
       if read_attribute(c).zero?
         write_attribute(c, nil)
         clear_attribute_changes(c)
@@ -49,7 +57,7 @@ class Record < ActiveRecord::Base
   end
 
   def convert_nils_to_zeros
-    [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid].each do |c|
+    NILLED_ZEROS.each do |c|
       write_attribute(c, 0) if read_attribute(c).nil?
     end
   end

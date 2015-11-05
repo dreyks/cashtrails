@@ -10,6 +10,10 @@ group :servers do
   gem 'unicorn-worker-killer'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'kaminari'
 
 gem 'rack-mini-profiler'
@@ -58,3 +62,5 @@ group :tools do
   gem 'rubocop'
   gem 'guard-rubocop'
 end
+
+ruby '2.2.3'

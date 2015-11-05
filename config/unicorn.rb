@@ -15,8 +15,10 @@ timeout 30
 
 pid "tmp/pids/unicorn.pid"
 
-stderr_path "log/unicorn.stderr.log"
-stdout_path "log/unicorn.stdout.log"
+unless 'development' == ENV['RAILS_ENV']
+  stderr_path "log/unicorn.stderr.log"
+  stdout_path "log/unicorn.stdout.log"
+end
 
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"

@@ -1,0 +1,17 @@
+%h1.page-header Records
+.table-responsive
+  %table.table.table-striped
+    %tr
+      %th Account
+      %th Amount
+      %th Tags
+      %th Group
+    - @records.each do |record|
+      %tr
+        %td= record.source_account
+        %td
+          = record.source_amount_text
+          = "=> #{record.target_amount_text}" if record.target_amount_text
+        %td
+        %td
+= paginate @records

@@ -1,0 +1,16 @@
+%h1.page-header Accounts
+.table-responsive
+  %table.table.table-striped
+    - @accounts.group_by(&:accountGroupIDOrInvalid).each do |_, accounts|
+      %tr
+        %th{colspan: 2, class: 'text-center'}= accounts.first.account_group.name
+      %tr
+        %th Name
+        %th Balance
+      - accounts.each do |account|
+        %tr
+          %td= account.name
+          %td
+            - account.balances.each do |balance|
+              %p{class: balance.amount > 0 ? 'text-success' : 'text-danger'}
+                = balance.amount_text

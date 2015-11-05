@@ -10,6 +10,10 @@ gem "sqlite3"
 gem "rake"
 gem 'haml'
 
+gem 'kaminari', :require => 'kaminari/sinatra'
+
+gem 'tux'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-bootstrap'

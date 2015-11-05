@@ -10,6 +10,7 @@ namespace :assets do
   task :precompile do
     environment = Assets.sprockets
     manifest = Sprockets::Manifest.new(environment.index, Assets.target_path)
+    # manifest.clean(1)
     manifest.compile(Assets.precompile)
   end
 

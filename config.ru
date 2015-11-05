@@ -3,6 +3,8 @@ require 'bundler'
 require 'bundler/setup'
 Bundler.require
 
+Dir.glob("./models/*") { |file| require file }
+require './utils.rb'
 require './app'
 require './assets'
 

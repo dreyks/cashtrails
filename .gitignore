@@ -8,6 +8,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/log/
 db/*.cashtrails
 db/*.sqlite3
 db/*.db

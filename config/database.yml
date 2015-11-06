@@ -1,6 +1,6 @@
-cash_trails_sqlite:
+sqlite:
   adapter: sqlite3
-  database: db/cashtrails.sqlite3
+  database: db/bare.sqlite3
 
 default: &default
   adapter: postgresql

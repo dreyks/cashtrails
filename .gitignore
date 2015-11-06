@@ -9,9 +9,7 @@
 /test/version_tmp/
 /tmp/
 /log/
-db/*.cashtrails
-db/*.sqlite3
-db/*.db
+db/Main.db
 public/assets
 spring
 

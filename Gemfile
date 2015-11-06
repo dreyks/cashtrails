@@ -10,10 +10,6 @@ group :servers do
   gem 'unicorn-worker-killer'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
 gem 'kaminari'
 
 gem 'rack-mini-profiler'

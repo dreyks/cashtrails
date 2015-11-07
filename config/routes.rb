@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  root 'accounts#index'
+  devise_for :users
+
+  root 'pages#root'
   resources :accounts
   resources :records
+
+  get '/upload' => 'pages#new_db'
+  post '/upload' => 'pages#upload_db'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

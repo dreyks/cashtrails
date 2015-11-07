@@ -42,6 +42,7 @@ GEM
     astrolabe (1.3.1)
       parser (~> 2.2)
     awesome_print (1.6.1)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -63,6 +64,13 @@ GEM
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
+    devise (3.5.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -139,6 +147,7 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    orm_adapter (0.5.0)
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
     pg (0.18.3)
@@ -201,6 +210,8 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     ref (2.0.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -271,6 +282,8 @@ GEM
     unicorn-worker-killer (0.4.3)
       get_process_mem (~> 0)
       unicorn (~> 4)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -286,6 +299,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   capybara
+  devise
   factory_girl_rails
   fuubar
   guard

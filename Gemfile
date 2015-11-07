@@ -5,6 +5,8 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sqlite3'
 
+gem 'devise'
+
 group :servers do
   gem 'unicorn'
   gem 'unicorn-worker-killer'

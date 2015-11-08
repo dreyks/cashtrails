@@ -9,7 +9,8 @@
 /test/version_tmp/
 /tmp/
 /log/
-db/Main.db
+db/*.sqlite3
+!db/bare.sqlite3
 public/assets
 spring
 

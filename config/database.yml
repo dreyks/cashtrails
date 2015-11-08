@@ -5,8 +5,8 @@ sqlite:
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: cash_trails
-  password: password
+  username: <%= `whoami` %>
+  # password: password
   pool: 5
   timeout: 5000
 

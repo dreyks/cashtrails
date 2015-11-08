@@ -20,8 +20,8 @@ class Record < CashTrailsModel
 
   belongs_to :group, foreign_key: :groupIDOrInvalid
 
-  after_initialize  :convert_zeros_to_nils
-  before_save       :convert_nils_to_zeros
+  after_initialize :convert_zeros_to_nils
+  before_save :convert_nils_to_zeros
 
   def transfer?
     recordKind == KIND_TRANSFER

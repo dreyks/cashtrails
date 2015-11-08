@@ -1,0 +1,23 @@
+Lint/HandleExceptions:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 18
+
+Metrics/LineLength:
+  Max: 160
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  MaxLineLength: 80
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space

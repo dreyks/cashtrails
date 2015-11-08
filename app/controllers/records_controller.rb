@@ -9,6 +9,6 @@ class RecordsController < ApplicationController
       :target_currency_foreign,
       :tags,
       :group
-      ).order(gmtDate: :desc, gmtTime: :desc).page params[:page]
+    ).order(gmtDate: :desc, gmtTime: :desc).page params[:page]
   end
 end

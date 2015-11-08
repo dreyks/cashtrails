@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'sqlite3'
@@ -38,24 +37,24 @@ group :development do
 
   gem 'web-console'
   gem 'quiet_assets'
-end
   gem 'spring'
+end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  # gem 'rspec-rails'
+  # gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'capybara'
-  gem 'fuubar'
+  # gem 'capybara'
+  # gem 'fuubar'
   # gem 'poltergeist'
 end
 
 group :tools do
   gem 'spring-commands-rspec'
   gem 'guard'
-  gem 'guard-rspec'
+  # gem 'guard-rspec'
 
   gem 'rubocop'
   gem 'guard-rubocop'

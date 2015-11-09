@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'pages#root'
+
+  resources :databases, only: [:new, :create], path_names: {new: :upload}
   resources :accounts
   resources :records
 

@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   private
 
   def select_sqlite_db
-    db_name = (user_signed_in? ? current_user.db : false) || 'bare'
+    db_name = (user_signed_in? ? current_user.database.file_path : false) || 'bare'
 
     connection_config = CashTrailsModel.configurations['sqlite'].clone
-    if connection_config['database'].gsub!(%r{db\/.*\.sqlite3}, "db/#{db_name}.sqlite3")
+    if connection_config['database'].replace db_name
       CashTrailsModel.establish_connection connection_config
     end
     true

@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable
 
-  def db=(db_name)
-    if db
-      # TODO: move this to separate entity
-      begin
-        FileUtils.rm Rails.root.join('db', "#{db}.sqlite3")
-      rescue Errno::ENOENT
-      end
-    end
+  has_one :database
 
-    super(db_name)
+  def database=(db)
+    database.destroy if database
+
+    super(db)
   end
 end

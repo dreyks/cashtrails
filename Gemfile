@@ -13,6 +13,8 @@ end
 
 gem 'kaminari'
 
+gem 'simple_form'
+
 gem 'rack-mini-profiler'
 gem 'rails-footnotes'
 

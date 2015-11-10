@@ -11,7 +11,7 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         .navbar-header
-          %a.navbar-brand{href: '/'} Cashtrails
+          %a.navbar-brand{href: root_path} Cashtrails
         .navbar-collapse.collapse
     .container-fluid
       .row
@@ -20,6 +20,9 @@
             %li
               = link_to 'Accounts', accounts_path
               = link_to 'Records', records_path
+          %ul.nav.nav-sidebar
+            %li
+              = link_to 'Import', importers_path
           %ul.nav.nav-sidebar
             %li
               = link_to 'Upload db', new_database_path

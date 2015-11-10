@@ -3,12 +3,16 @@ Rails.application.routes.draw do
 
   root 'pages#root'
 
-  resources :databases, only: [:new, :create], path_names: {new: :upload}
   resources :accounts
   resources :records
 
-  get '/upload' => 'pages#new_db'
-  post '/upload' => 'pages#upload_db'
+  resources :databases, only: [:new, :create], path_names: {new: :upload}
+  resources :importers do
+    resources :importer_sessions, shallow: true, only: [:new, :create, :show] do
+      post :finalize, on: :member
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

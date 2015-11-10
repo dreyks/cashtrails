@@ -1,0 +1,10 @@
+.row
+  .col-md-6
+    = simple_form_for @importer do |f|
+      = f.error_notification
+      = f.input :name
+      = f.input :date_field
+      = f.input :amount_field
+      = f.input :foreign_amount_field
+      = f.input :description_field
+      = f.button :submit, @importer.new_record? ? 'Create' : 'Update'

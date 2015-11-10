@@ -2,30 +2,33 @@ class ImportersController < ApplicationController
   before_action :set_importer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @importers = Importer.all
+    @importers = current_user.importers
   end
 
   def show
   end
 
   def new
-    @importer = Importer.new
+    @importer = current_user.importers.new
   end
 
   def edit
+    head :forbidden unless @importer.user == current_user
   end
 
   def create
-    @importer = Importer.new(importer_params)
+    @importer = current_user.importers.new(importer_params)
 
     if @importer.save
-      redirect_to @importers_url, notice: 'Importer was successfully created.'
+      redirect_to importers_url, notice: 'Importer was successfully created.'
     else
       render :new
     end
   end
 
   def update
+    head :forbidden and return unless @importer.user == current_user
+
     if @importer.update(importer_params)
       redirect_to importers_url, notice: 'Importer was successfully updated.'
     else

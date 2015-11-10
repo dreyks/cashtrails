@@ -1,0 +1,14 @@
+%h1 Starting import
+
+.row
+  .col-md-6
+    = simple_form_for @importer_session, url: importer_importer_sessions_path do |f|
+      = f.error_notification
+      = f.association :importer, disabled: true
+      = f.association :account
+      = f.input :file, as: :file
+      .pull-right
+        = f.button :submit, 'Continue', class: 'btn-success'
+        = link_to 'Cancel', importers_path, class: 'btn btn-danger'
+
+

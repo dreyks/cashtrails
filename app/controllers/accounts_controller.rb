@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
   def index
-    @accounts = Account.includes({balances: :currency}, :account_group).order(:accountGroupIDOrInvalid, :accountOrder)
+    @accounts = Account.includes({balances: :currency}, :account_group)
   end
 end

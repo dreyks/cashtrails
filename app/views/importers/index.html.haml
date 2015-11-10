@@ -1,20 +1,15 @@
 %h1 Available importers
 
 %table.table.table-striped
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
   %tbody
     - @importers.each do |importer|
       %tr
-        %td= link_to importer, new_importer_importer_session_path(importer)
-        %td= link_to 'Show', importer
-        %td= link_to 'Edit', edit_importer_path(importer)
-        %td= link_to 'Delete', importer, method: :delete, data: {confirm: 'Are you sure?'}
+        %td= link_to importer, importer
+        %td
+          = link_to 'Start import', new_importer_importer_session_path(importer), class: 'btn btn-success'
+          = link_to 'Edit', edit_importer_path(importer), class: 'btn btn-warning'
+          = link_to 'Delete', importer, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
 
 %br
 
-= link_to 'New Importer', new_importer_path
+= link_to 'Add importer', new_importer_path, class: 'btn btn-primary'

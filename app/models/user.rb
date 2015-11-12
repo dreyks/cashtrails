@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   end
 
   def ==(other)
-    id = other.id
+    id == other.id
   end
 end

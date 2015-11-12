@@ -42,11 +42,12 @@ class ImportersController < ApplicationController
   end
 
   private
-    def set_importer
-      @importer = Importer.find(params[:id])
-    end
 
-    def importer_params
-      params.require(:importer).permit(:name, :date_field, :amount_field, :foreign_amount_field, :description_field)
-    end
+  def set_importer
+    @importer = Importer.find(params[:id])
+  end
+
+  def importer_params
+    params.require(:importer).permit(:name, :date_field, :amount_field, :foreign_amount_field, :description_field)
+  end
 end

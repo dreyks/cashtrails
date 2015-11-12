@@ -1,5 +1,12 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+
 Lint/HandleExceptions:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 15
 
 Metrics/LineLength:
   Max: 160

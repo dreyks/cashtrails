@@ -1,6 +1,9 @@
-sqlite:
+sqlite_development: &sqlite
   adapter: sqlite3
   database: db/bare.sqlite3
+
+sqlite_production:
+  <<: *sqlite
 
 default: &default
   adapter: postgresql
@@ -28,3 +31,7 @@ production:
 test:
   <<: *default
   database: cash_trails_test
+
+sqlite_test:
+  adapter: sqlite3
+  database: db/bare_test.sqlite3

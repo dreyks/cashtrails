@@ -21,7 +21,27 @@ class Record < CashTrailsModel
   belongs_to :group, foreign_key: :groupIDOrInvalid
 
   after_initialize :convert_zeros_to_nils
+  after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros
+
+  def sanitize
+    a1 = amount1
+    a2 = amount2
+    if a1 && a2 && (a1 < 0 || a2 < 0)
+      assign_attributes(amount1: -(a1.abs), amount2: -(a2.abs))
+    end
+
+    return unless currency1IDOrInvalid == currency2IDOrInvalid
+
+    assign_attributes(amount2: nil, currency2IDOrInvalid: nil)
+  end
+
+  def date=(date)
+    self.localDate = date.strftime('%Y%m%d').to_i
+    self.localTime = date.strftime('%H%M%S').to_i
+    self.gmtDate = date.in_time_zone('UTC').strftime('%Y%m%d').to_i
+    self.gmtTime = date.in_time_zone('UTC').strftime('%H%M%S').to_i
+  end
 
   def transfer?
     recordKind == KIND_TRANSFER
@@ -49,7 +69,7 @@ class Record < CashTrailsModel
 
   def convert_zeros_to_nils
     NILLED_ZEROS.each do |c|
-      if read_attribute(c).zero?
+      if read_attribute(c) && read_attribute(c).zero?
         write_attribute(c, nil)
         clear_attribute_changes(c)
       end

@@ -40,23 +40,23 @@ group :development do
   gem 'web-console'
   gem 'quiet_assets'
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
-  # gem 'rspec-rails'
-  # gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   # gem 'capybara'
-  # gem 'fuubar'
+  gem 'fuubar'
   # gem 'poltergeist'
 end
 
 group :tools do
-  gem 'spring-commands-rspec'
   gem 'guard'
-  # gem 'guard-rspec'
+  gem 'guard-rspec'
 
   gem 'rubocop'
   gem 'guard-rubocop'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110160146) do
+ActiveRecord::Schema.define(version: 20151112213531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20151110160146) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "importer_session_items", force: :cascade do |t|
+    t.integer  "importer_session_id"
+    t.integer  "record_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "importer_sessions", force: :cascade do |t|
@@ -40,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151110160146) do
     t.string   "amount_field"
     t.string   "foreign_amount_field"
     t.string   "description_field"
+    t.string   "encoding"
   end
 
   create_table "users", force: :cascade do |t|

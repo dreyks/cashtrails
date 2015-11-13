@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
+# load miniprofiler before pg because otherwise sqlite queries aren't being logged
+gem 'rack-mini-profiler'
 gem 'pg'
 gem 'sqlite3'
 
@@ -15,7 +17,6 @@ gem 'kaminari'
 
 gem 'simple_form'
 
-gem 'rack-mini-profiler'
 gem 'rails-footnotes'
 
 gem 'haml-rails'

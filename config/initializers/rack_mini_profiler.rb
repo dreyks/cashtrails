@@ -19,14 +19,16 @@ if defined?(Rack::MiniProfiler)
 
       elapsed_time = SqlPatches.elapsed_time(start)
 
-      # adding binds to sql for logging purposes
-      # checking if ActiveRecord::LogSubscriber is here
-      ar_log_subscriber = ActiveSupport::LogSubscriber.subscribers.find do |s|
-        s.is_a? ActiveRecord::LogSubscriber
-      end
-      if ar_log_subscriber
-        rendered_binds = binds.map { |b| ar_log_subscriber.render_bind(*b) }
-        sql = "#{sql} #{rendered_binds}"
+      if binds.present?
+        # adding binds to sql for logging purposes
+        # checking if ActiveRecord::LogSubscriber is here
+        ar_log_subscriber = ActiveSupport::LogSubscriber.subscribers.find do |s|
+          s.is_a? ActiveRecord::LogSubscriber
+        end
+        if ar_log_subscriber
+          rendered_binds = binds.map { |b| ar_log_subscriber.render_bind(*b) }
+          sql = "#{sql} #{rendered_binds}"
+        end
       end
 
       Rack::MiniProfiler.record_sql(sql, elapsed_time)

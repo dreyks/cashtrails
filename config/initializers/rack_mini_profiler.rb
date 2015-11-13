@@ -5,6 +5,7 @@ if defined?(Rack::MiniProfiler)
     Rails.application.middleware.insert_after(Rack::Deflater, Rack::MiniProfiler)
   end
 
+
   Rack::MiniProfiler::ActiveRecordInstrumentation.class_eval do
     def log_with_miniprofiler(*args, &block)
       return log_without_miniprofiler(*args, &block) unless SqlPatches.should_measure?
@@ -18,6 +19,8 @@ if defined?(Rack::MiniProfiler)
 
       elapsed_time = SqlPatches.elapsed_time(start)
 
+      # adding binds to sql for logging purposes
+      # checking if ActiveRecord::LogSubscriber is here
       ar_log_subscriber = ActiveSupport::LogSubscriber.subscribers.find do |s|
         s.is_a? ActiveRecord::LogSubscriber
       end

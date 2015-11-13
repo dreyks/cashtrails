@@ -6,7 +6,7 @@
     %th Tags
     %th Group
     %th Note
-  - @importer_session.importer_session_items.map(&:record).each do |record|
+  - @importer_session.items.includes(:record).map(&:record).each do |record|
     %tr
       %td= record.occured_at.strftime('%e %b %Y %H:%M')
       %td
@@ -20,5 +20,6 @@
           %p= tag
       %td= record.group.presence
       %td= record.note
-
-= link_to 'Abort', @importer_session, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
+.pull-right
+  = link_to 'Commit', commit_importer_session_path(@importer_session), class: 'btn btn-success', data: {confirm: 'Are you sure?'}
+  = link_to 'Rollback', rollback_importer_session_path(@importer_session), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

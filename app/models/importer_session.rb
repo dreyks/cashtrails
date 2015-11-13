@@ -6,7 +6,7 @@ class ImporterSession < ActiveRecord::Base
   belongs_to :importer
   belongs_to :user
   belongs_to :account
-  has_many :importer_session_items
+  has_many :items, class_name: ImporterSessionItem, dependent: :delete_all
 
   validates_presence_of :importer, :user, :account, :file
 
@@ -30,7 +30,7 @@ class ImporterSession < ActiveRecord::Base
 
   def create_items
     parsed_data.each do |item_data|
-      item = importer_session_items.new
+      item = items.new
       record = Record.new(importer.parse_record_data(item_data))
       record.source_account = account
 

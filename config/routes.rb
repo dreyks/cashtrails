@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   resources :databases, only: [:new, :create], path_names: {new: :upload}
   resources :importers do
-    resources :importer_sessions, shallow: true, only: [:new, :create, :show, :destroy] do
-      post :finalize, on: :member
+    resources :importer_sessions, shallow: true, only: [:new, :create, :show] do
+      member do
+        delete 'commit'
+        delete 'rollback'
+      end
     end
   end
 

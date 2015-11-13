@@ -18,11 +18,22 @@ class ImporterSessionsController < ApplicationController
     @importer_session = current_user.importer_sessions.find(params[:id])
   end
 
-  def destroy
-    @importer_session = current_user.importer_sessions.find(params[:id])
-    @importer_session.destroy
-    # TODO: handle wrong user
+  def rollback
+    importer_session = current_user.importer_sessions.find(params[:id])
+    redirect_to importers_url unless importer_session
+
+    importer_session.items.includes(:record).map(&:record).delete_all
+    importer_session.destroy
+
     redirect_to importers_url, notice: 'Importer session aborted.'
+  end
+
+  def commit
+    importer_session = current_user.importer_sessions.find(params[:id])
+    redirect_to importers_url unless importer_session
+
+    importer_session.destroy
+    redirect_to importers_url, notice: 'Finished importing.'
   end
 
   private

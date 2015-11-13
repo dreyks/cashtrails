@@ -48,6 +48,6 @@ class ImportersController < ApplicationController
   end
 
   def importer_params
-    params.require(:importer).permit(:name, :date_field, :amount_field, :foreign_amount_field, :description_field)
+    params.require(:importer).permit(:name, :date_field, :amount_field, :foreign_amount_field, :description_field, :encoding)
   end
 end

@@ -7,8 +7,8 @@ class Importer < ActiveRecord::Base
 
   alias_attribute :to_s, :name
 
-  def encoding
-    @encoding ||= 'utf-8'
+  before_save do
+    self.encoding = 'utf-8' unless encoding
   end
 
   def call(file)

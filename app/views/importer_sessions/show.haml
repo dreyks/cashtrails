@@ -21,5 +21,5 @@
       %td= record.group.presence
       %td= record.note
 .pull-right
-  = link_to 'Commit', commit_importer_session_path(@importer_session), class: 'btn btn-success', data: {confirm: 'Are you sure?'}
-  = link_to 'Rollback', rollback_importer_session_path(@importer_session), class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
+  = link_to 'Commit', commit_importer_session_path(@importer_session), method: :delete, class: 'btn btn-success', data: {confirm: 'Are you sure?'}
+  = link_to 'Rollback', rollback_importer_session_path(@importer_session), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

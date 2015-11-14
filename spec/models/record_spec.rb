@@ -24,5 +24,12 @@ describe Record do
       expect(record.currency2IDOrInvalid).to be_nil
       expect(record.amount2).to be_nil
     end
+
+    it 'handle floats as `amount` fields' do
+      record = Record.new(amount1: 611.93, amount2: 61193, currency2IDOrInvalid: 20)
+
+      expect(record.amount1).to eq 61193
+      expect(record.amount2).to eq 61193
+    end
   end
 end

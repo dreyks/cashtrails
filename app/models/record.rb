@@ -20,9 +20,29 @@ class Record < CashTrailsModel
 
   belongs_to :group, foreign_key: :groupIDOrInvalid
 
-  after_initialize :convert_zeros_to_nils
+  after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros
+
+  scope :with_includes, (lambda do
+    includes(
+      :source_account,
+      :target_account,
+      :source_currency,
+      :source_currency_foreign,
+      :target_currency,
+      :target_currency_foreign,
+      :tags,
+      :group
+    )
+  end)
+
+  (1..4).each do |num|
+    define_method "amount#{num}=" do |amt|
+      amt = (amt * 100).round if amt.is_a? Float
+      super(amt)
+    end
+  end
 
   def sanitize
     a1 = amount1

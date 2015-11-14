@@ -2,11 +2,17 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'config/initializers/rack_mini_profiler.rb'
+
 Lint/HandleExceptions:
   Enabled: false
 
 Metrics/AbcSize:
   Max: 15
+  Exclude:
+    - 'config/initializers/rack_mini_profiler.rb'
 
 Metrics/LineLength:
   Max: 160

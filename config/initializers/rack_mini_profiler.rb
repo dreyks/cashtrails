@@ -5,7 +5,6 @@ if defined?(Rack::MiniProfiler)
     Rails.application.middleware.insert_after(Rack::Deflater, Rack::MiniProfiler)
   end
 
-
   Rack::MiniProfiler::ActiveRecordInstrumentation.class_eval do
     def log_with_miniprofiler(*args, &block)
       return log_without_miniprofiler(*args, &block) unless SqlPatches.should_measure?
@@ -15,7 +14,7 @@ if defined?(Rack::MiniProfiler)
       rval             = log_without_miniprofiler(*args, &block)
 
       # Don't log schema queries if the option is set
-      return rval if Rack::MiniProfiler.config.skip_schema_queries and name =~ /SCHEMA/
+      return rval if Rack::MiniProfiler.config.skip_schema_queries && name =~ /SCHEMA/
 
       elapsed_time = SqlPatches.elapsed_time(start)
 

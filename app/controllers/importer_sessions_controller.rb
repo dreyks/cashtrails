@@ -22,7 +22,7 @@ class ImporterSessionsController < ApplicationController
     importer_session = current_user.importer_sessions.find(params[:id])
     redirect_to importers_url unless importer_session
 
-    importer_session.items.includes(:record).map(&:record).delete_all
+    Record.delete(importer_session.items.pluck(:record_id))
     importer_session.destroy
 
     redirect_to importers_url, notice: 'Importer session aborted.'

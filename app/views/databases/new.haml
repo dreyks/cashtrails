@@ -1,3 +1,3 @@
-= form_tag '/upload', multipart: true do
+= form_tag databases_path, multipart: true do
   %p= file_field_tag 'upload[file]'
   %p= submit_tag 'Upload'

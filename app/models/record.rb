@@ -24,7 +24,7 @@ class Record < CashTrailsModel
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros
 
-  scope :with_includes, (lambda do
+  default_scope (lambda do
     includes(
       :source_account,
       :target_account,

@@ -1,6 +1,9 @@
 FactoryGirl.define do
-  factory :currency_uah, class: Currency do
-    id 20
-    currencyCode 'UAH'
+  factory :record do
+    factory :record_with_tags do
+      after(:create) do |record, _e|
+        create_list(:tag, 5, record: record)
+      end
+    end
   end
 end

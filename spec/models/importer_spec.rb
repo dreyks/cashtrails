@@ -11,6 +11,10 @@ describe Importer do
     }
   end
 
+  it 'has a valid factory' do
+    expect(build(:importer)).to be_valid
+  end
+
   describe '#call' do
     let(:sample_file) { File.open(Rails.root.join('spec/support/pumb_sample.csv')) }
 
@@ -22,7 +26,7 @@ describe Importer do
   end
 
   describe '#parse_record_data' do
-    let(:currency_uah) { create(:currency_uah) }
+    let(:currency_uah) { create(:currency, currencyCode: 'UAH') }
     it 'returns data hash to create a Record' do
       cmp = {
         note: sample_data[:description_field],

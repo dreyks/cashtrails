@@ -24,7 +24,9 @@ class Record < CashTrailsModel
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros
 
-  default_scope (lambda do
+  # if this has to be changed to a named scope, account for the need of
+  #   importer_session.items.includes(record: [_all_this_scopes_])
+  def self.default_scope
     includes(
       :source_account,
       :target_account,
@@ -35,8 +37,10 @@ class Record < CashTrailsModel
       :tags,
       :group
     )
-  end)
+  end
 
+  # Helper method to assign Floats
+  # All amounts are stored as Fixnum
   (1..4).each do |num|
     define_method "amount#{num}=" do |amt|
       amt = (amt * 100).round if amt.is_a? Float
@@ -44,18 +48,7 @@ class Record < CashTrailsModel
     end
   end
 
-  def sanitize
-    a1 = amount1
-    a2 = amount2
-    if a1 && a2 && (a1 < 0 || a2 < 0)
-      assign_attributes(amount1: -(a1.abs), amount2: -(a2.abs))
-    end
-
-    return unless currency1IDOrInvalid == currency2IDOrInvalid
-
-    assign_attributes(amount2: nil, currency2IDOrInvalid: nil)
-  end
-
+  # Helper method to assign all date-related field at once
   def date=(date)
     self.localDate = date.strftime('%Y%m%d').to_i
     self.localTime = date.strftime('%H%M%S').to_i
@@ -86,6 +79,19 @@ class Record < CashTrailsModel
   end
 
   private
+
+  # Sanity checks on currencies and amounts
+  def sanitize
+    a1 = amount1
+    a2 = amount2
+    if a1 && a2 && (a1 < 0 || a2 < 0)
+      assign_attributes(amount1: -(a1.abs), amount2: -(a2.abs))
+    end
+
+    return unless currency1IDOrInvalid == currency2IDOrInvalid
+
+    assign_attributes(amount2: nil, currency2IDOrInvalid: nil)
+  end
 
   def convert_zeros_to_nils
     NILLED_ZEROS.each do |c|

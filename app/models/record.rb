@@ -48,7 +48,7 @@ class Record < CashTrailsModel
     end
   end
 
-  # Helper method to assign all date-related field at once
+  # Helper method to assign all date-related fields at once
   def date=(date)
     self.localDate = date.strftime('%Y%m%d').to_i
     self.localTime = date.strftime('%H%M%S').to_i

@@ -57,6 +57,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -293,6 +294,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  database_cleaner
   devise
   factory_girl_rails
   fuubar

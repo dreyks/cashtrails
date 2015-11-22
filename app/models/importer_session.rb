@@ -10,8 +10,23 @@ class ImporterSession < ActiveRecord::Base
 
   validates_presence_of :importer, :user, :account, :file
 
-  before_save :parse
-  after_save :create_items
+  # before_save :parse
+  # after_save :create_items
+
+  def import
+    parse
+    save
+    create_items
+  end
+
+  def commit
+    destroy
+  end
+
+  def rollback
+    Record.delete(items.pluck(:record_id))
+    destroy
+  end
 
   private
 

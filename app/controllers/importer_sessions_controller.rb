@@ -7,7 +7,7 @@ class ImporterSessionsController < ApplicationController
     @importer_session = current_user.importer_sessions.new(importer_session_params)
     @importer_session.importer_id = params[:importer_id]
 
-    if @importer_session.save
+    if @importer_session.import
       redirect_to @importer_session
     else
       render :new
@@ -22,8 +22,7 @@ class ImporterSessionsController < ApplicationController
     importer_session = current_user.importer_sessions.find(params[:id])
     redirect_to importers_url unless importer_session
 
-    Record.delete(importer_session.items.pluck(:record_id))
-    importer_session.destroy
+    importer_session.rollback
 
     redirect_to importers_url, notice: 'Importer session aborted.'
   end
@@ -32,7 +31,8 @@ class ImporterSessionsController < ApplicationController
     importer_session = current_user.importer_sessions.find(params[:id])
     redirect_to importers_url unless importer_session
 
-    importer_session.destroy
+    importer_session.commit
+
     redirect_to importers_url, notice: 'Finished importing.'
   end
 

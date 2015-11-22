@@ -27,6 +27,7 @@ describe Importer do
 
   describe '#parse_record_data' do
     let(:currency_uah) { create(:currency, currencyCode: 'UAH') }
+
     it 'returns data hash to create a Record' do
       cmp = {
         note: sample_data[:description_field],

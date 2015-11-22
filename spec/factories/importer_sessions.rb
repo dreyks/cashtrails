@@ -3,16 +3,14 @@ FactoryGirl.define do
     importer
     user
     account
-    file ''
+    file 'whatever'
 
-    factory :importer_session_with_items do
-      transient do
-        items_count 5
-      end
+    transient do
+      items_count nil
+    end
 
-      after(:create) do |session, evaluator|
-        create_list(:importer_session_item, evaluator.items_count, importer_session: session)
-      end
+    after(:create) do |session, evaluator|
+      create_list(:importer_session_item, evaluator.items_count, importer_session: session)
     end
   end
 end

@@ -5,6 +5,6 @@ FactoryGirl.define do
     importer_session
     record { build(record_factory) }
 
-    after(:create) { record.save! }
+    after(:create) { |item| item.record.save! }
   end
 end

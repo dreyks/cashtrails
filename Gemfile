@@ -52,6 +52,7 @@ end
 group :test do
   # gem 'capybara'
   gem 'fuubar'
+  gem 'database_cleaner'
   # gem 'poltergeist'
 end
 

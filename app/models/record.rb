@@ -25,7 +25,7 @@ class Record < CashTrailsModel
   before_save :convert_nils_to_zeros
 
   # if this has to be changed to a named scope, account for the need of
-  #   importer_session.items.includes(record: [_all_this_scopes_])
+  #   importer_session.items.includes(record: [_all_this_includes_here_])
   def self.default_scope
     includes(
       :source_account,

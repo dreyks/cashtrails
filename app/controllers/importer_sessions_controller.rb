@@ -15,7 +15,8 @@ class ImporterSessionsController < ApplicationController
   end
 
   def show
-    @importer_session = current_user.importer_sessions.find(params[:id])
+    @importer_session = ImporterSession.find(params[:id])
+    @items = @importer_session.items.includes(:record)
   end
 
   def rollback

@@ -1,0 +1,41 @@
+.modal.fade#edit_record_modal
+  .modal-dialog.modal-lg
+    .modal-content
+      = simple_form_for @record do |f|
+        = f.input :kind, as: :hidden
+        .modal-header
+          .row
+            .col-xs-6
+              .modal-title
+                .dropdown
+                  %span{data: {toggle: :dropdown}}
+                    %span.current= Record.kinds[@record.kind]
+                    %span.caret
+                  %ul.dropdown-menu
+                    - Record.kinds.each do |kind, name|
+                      %li
+                        %a{id: "#{kind}"}= name
+            .col-xs-6
+              %button.close{data: {dismiss: :modal}}
+                %span &times;
+        .modal-body
+          = f.input :occured_at, as: :datetime
+          = f.association :source_account, include_blank: false
+          = f.association :target_account
+          .form-group
+            .col-xs-3.text-right
+              = f.label :source_amount
+            .col-xs-9
+              .form-inline
+                = f.input :source_amount, label: false
+                = f.association :source_currency, label: false
+          = f.association :group
+          = f.input :note
+        .modal-footer
+          %button.btn.btn-default{data: {dismiss: :modal}}
+          = f.button :submit, 'Apply', remote: true
+:javascript
+  $('#edit_record_modal .dropdown a').click(function(){
+    $('#record_kind').val($(this).id);
+    $(this).parents('.dropdown').find('.current').text($(this).text());
+  });

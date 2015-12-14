@@ -31,10 +31,10 @@ describe Importer do
     it 'returns data hash to create a Record' do
       cmp = {
         note: sample_data[:description_field],
-        currency1IDOrInvalid: currency_uah.id,
-        amount1: 612.93,
-        currency2IDOrInvalid: currency_uah.id,
-        amount2: -612.93,
+        source_currency_id: currency_uah.id,
+        source_amount: 612.93,
+        source_foreign_currency_id: currency_uah.id,
+        source_foreign_amount: -612.93,
         date: '22.10.2015 21:01'.in_time_zone('Europe/Kiev')
       }
       expect(pumb_importer.parse_record_data(sample_data)).to eq cmp

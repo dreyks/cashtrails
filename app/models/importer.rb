@@ -8,7 +8,7 @@ class Importer < ActiveRecord::Base
   alias_attribute :to_s, :name
 
   before_save do
-    self.encoding = 'utf-8' unless encoding
+    self.encoding ||= 'utf-8'
   end
 
   def call(file)
@@ -43,19 +43,21 @@ class Importer < ActiveRecord::Base
 
   private
 
+  # Converts amount_field to source_amount + source_currency_id
+  # foreign_amount_field to source_foreign_amount + source_foreign_currency_id
   def extract_amount(key, value)
-    num = {amount_field: 1, foreign_amount_field: 2}[key]
-    res_amount = "amount#{num}".to_sym
-    res_currency = "currency#{num}IDOrInvalid".to_sym
+    amount_attr = "source_#{key.to_s.sub('_field', '')}".to_sym
+    currency_id_attr = "#{amount_attr.to_s.sub('amount', 'currency_id')}".to_sym
+
     out = {
-      res_amount => nil,
-      res_currency => nil
+      amount_attr => nil,
+      currency_id_attr => nil
     }
 
     amount, currency_code = value.split(' ')
 
     return out unless (currency = Currency.where(currencyCode: currency_code).first)
 
-    out.update(res_amount => amount.tr(',', '.').to_f, res_currency => currency.id)
+    out.update(amount_attr => amount.tr(',', '.').to_f, currency_id_attr => currency.id)
   end
 end

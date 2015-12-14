@@ -5,7 +5,14 @@ class Record < CashTrailsModel
   KIND_ADJUSTMENT = 3
 
   # fields where 0 has to be treated as +nil+
-  NILLED_ZEROS = [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid]
+  NILLED_ZEROS = [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid,
+                  :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid]
+
+  alias_attribute :source_currency_id,          :currency1IDOrInvalid
+  alias_attribute :source_foreign_currency_id,  :currency2IDOrInvalid
+  alias_attribute :target_currency_id,          :currency3IDOrInvalid
+  alias_attribute :target_foreign_currency_id,  :currency4IDOrInvalid
+  alias_attribute :kind,  :recordKind
 
   belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
   belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid
@@ -39,13 +46,26 @@ class Record < CashTrailsModel
     )
   end
 
-  # Helper method to assign Floats
+  def self.kinds
+    {
+      KIND_EXPENSE => 'Expense',
+      KIND_INCOME => 'Income',
+      KIND_TRANSFER => 'Transfer',
+      KIND_ADJUSTMENT => 'Ballance adjustment'
+    }
+  end
+
+  # Helper methods to assign Floats
   # All amounts are stored as Fixnum
-  (1..4).each do |num|
-    define_method "amount#{num}=" do |amt|
-      amt = (amt * 100).round if amt.is_a? Float
-      super(amt)
-    end
+  %w(source source_foreign target target_foreign).each_with_index do |m, i|
+    define_method "#{m}_amount" do                  # def source_amount
+      send("amount#{i + 1}").to_f / 100             #   amount1.to_f / 100
+    end                                             # end
+
+    define_method "#{m}_amount=" do |amt|           # def source_amount=(amt)
+      amt = (amt * 100).round if amt                #   amt = (amt * 100).round if amt
+      send("amount#{i + 1}=", amt)                  #   self.amount1 = amt
+    end                                             # end
   end
 
   # Helper method to assign all date-related fields at once
@@ -82,15 +102,26 @@ class Record < CashTrailsModel
 
   # Sanity checks on currencies and amounts
   def sanitize
-    a1 = amount1
-    a2 = amount2
+    check_amount_sign
+    check_kind
+
+    return if source_currency_id != source_foreign_currency_id
+
+    # unset foreign currency if same with main currency
+    assign_attributes(source_foreign_amount: nil, source_foreign_currency_id: nil)
+  end
+
+  # make both amounts negative if at least one of them is
+  def check_amount_sign
+    a1 = source_amount
+    a2 = source_foreign_amount
     if a1 && a2 && (a1 < 0 || a2 < 0)
-      assign_attributes(amount1: -(a1.abs), amount2: -(a2.abs))
+      assign_attributes(source_amount: -(a1.abs), source_foreign_amount: -(a2.abs))
     end
+  end
 
-    return unless currency1IDOrInvalid == currency2IDOrInvalid
+  def check_kind
 
-    assign_attributes(amount2: nil, currency2IDOrInvalid: nil)
   end
 
   def convert_zeros_to_nils

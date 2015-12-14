@@ -14,3 +14,23 @@
  *= require twbs
  *= require main
  */
+
+.table {
+  display: table;
+}
+
+.table .tr {
+  height: 100%;
+  display: table-row;
+}
+
+.table .thead {
+  height: 100%;
+  display: table-header-group;
+}
+
+.table .tr .td {
+  display: table-cell;
+  float: none;
+  vertical-align: top;
+}

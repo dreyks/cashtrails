@@ -1,0 +1,6 @@
+:plain
+  if (!($('#edit_record_modal').length > 0))
+    $('body').append($('<div id="edit_record_modal"></div>'));
+
+  $('#edit_record_modal').replaceWith("#{j(render partial: 'form')}")
+  $('#edit_record_modal').modal({show: true});

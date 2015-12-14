@@ -1,25 +1,10 @@
-%table.table.table-striped
-  %tr
-    %th Date
-    %th Account
-    %th Amount
-    %th Tags
-    %th Group
-    %th Note
-  - @importer_session.items.includes(:record).map(&:record).each do |record|
-    %tr
-      %td= record.occured_at.strftime('%e %b %Y %H:%M')
-      %td
-        = record.source_account
-        = " => #{record.target_account}" if record.transfer?
-      %td
-        = record.source_amount_text
-        = "=> #{record.target_amount_text}" if record.target_amount_text
-      %td
-        - record.tags.each do |tag|
-          %p= tag
-      %td= record.group.presence
-      %td= record.note
+= render partial: 'records/record_row',
+         collection: @items.map(&:record),
+         as: :record,
+         layout: 'records/layout_table'
+
 .pull-right
-  = link_to 'Commit', commit_importer_session_path(@importer_session), method: :delete, class: 'btn btn-success', data: {confirm: 'Are you sure?'}
-  = link_to 'Rollback', rollback_importer_session_path(@importer_session), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
+  = link_to 'Commit', commit_importer_session_path(@importer_session),
+            method: :delete, class: 'btn btn-success', data: {confirm: 'Are you sure?'}
+  = link_to 'Rollback', rollback_importer_session_path(@importer_session),
+            method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

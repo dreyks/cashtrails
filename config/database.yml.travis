@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  database: travis_ci_test
+  username: postgres
+
+sqlite_test:
+  adapter: sqlite3
+  database: db/bare_test.sqlite3

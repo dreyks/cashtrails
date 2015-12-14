@@ -1,0 +1,13 @@
+language: ruby
+services:
+  - postgresql
+rvm:
+  - 2.2.3
+  - 2.0.0
+bundler_args: --without servers tools
+before_install:
+  - gem update --system
+  - gem --version
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml

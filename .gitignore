@@ -11,6 +11,7 @@
 /log/
 db/*.sqlite3
 !db/bare.sqlite3
+!db/bare_test.sqlite3
 public/assets
 spring
 

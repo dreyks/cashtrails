@@ -12,7 +12,7 @@ class Record < CashTrailsModel
   alias_attribute :source_foreign_currency_id,  :currency2IDOrInvalid
   alias_attribute :target_currency_id,          :currency3IDOrInvalid
   alias_attribute :target_foreign_currency_id,  :currency4IDOrInvalid
-  alias_attribute :kind,  :recordKind
+  alias_attribute :kind, :recordKind
 
   belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
   belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid
@@ -35,14 +35,10 @@ class Record < CashTrailsModel
   #   importer_session.items.includes(record: [_all_this_includes_here_])
   def self.default_scope
     includes(
-      :source_account,
-      :target_account,
-      :source_currency,
-      :source_currency_foreign,
-      :target_currency,
-      :target_currency_foreign,
-      :tags,
-      :group
+      :source_account, :target_account,
+      :source_currency, :source_currency_foreign,
+      :target_currency, :target_currency_foreign,
+      :tags, :group
     )
   end
 
@@ -115,13 +111,12 @@ class Record < CashTrailsModel
   def check_amount_sign
     a1 = source_amount
     a2 = source_foreign_amount
-    if a1 && a2 && (a1 < 0 || a2 < 0)
-      assign_attributes(source_amount: -(a1.abs), source_foreign_amount: -(a2.abs))
-    end
+    return unless a1 && a2 && (a1 < 0 || a2 < 0)
+
+    assign_attributes(source_amount: -(a1.abs), source_foreign_amount: -(a2.abs))
   end
 
   def check_kind
-
   end
 
   def convert_zeros_to_nils

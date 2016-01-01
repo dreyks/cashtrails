@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  before_action :select_sqlite_db
+  before_action :select_sqlite_db, unless: :devise_controller?
 
   private
 

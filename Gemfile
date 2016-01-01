@@ -28,6 +28,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
+  gem 'rails-assets-x-editable'
 end
 
 group :development do

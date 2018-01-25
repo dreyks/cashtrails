@@ -6,7 +6,7 @@ class ImporterSession < ActiveRecord::Base
   belongs_to :importer
   belongs_to :user
   belongs_to :account
-  has_many :items, class_name: ImporterSessionItem, dependent: :delete_all
+  has_many :items, class_name: 'ImporterSessionItem', dependent: :delete_all
 
   validates_presence_of :importer, :user, :account, :file
 

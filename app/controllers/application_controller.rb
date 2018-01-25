@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   private
 
   def select_sqlite_db
+    current_user.try(:database) or return
+
     CashTrailsModel.select_user_db(current_user.database.file_path)
   end
 end

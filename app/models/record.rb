@@ -82,7 +82,7 @@ class Record < CashTrailsModel
 
   def source_amount_text
     Utils.format_money(amount1, source_currency).tap do |out|
-      out << " (#{Utils.format_money(amount2, source_currency_foreign)})" if amount2.present?
+      out << " (#{Utils.format_money(amount2, source_currency_foreign)})" if source_currency_foreign
     end
   end
 
@@ -90,7 +90,7 @@ class Record < CashTrailsModel
     return unless transfer?
 
     Utils.format_money(amount3, target_currency).tap do |out|
-      out << " (#{Utils.format_money(amount4, target_currency_foreign)})" if amount4.present?
+      out << " (#{Utils.format_money(amount4, target_currency_foreign)})" if target_currency_foreign
     end
   end
 

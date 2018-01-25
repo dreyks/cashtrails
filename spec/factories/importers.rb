@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :importer do
     user
     name 'Generic importer'

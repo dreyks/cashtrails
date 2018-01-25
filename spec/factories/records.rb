@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :record do
     source_account
     target_account

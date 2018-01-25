@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :importer_session do
     importer
     user

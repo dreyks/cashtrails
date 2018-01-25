@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'rails', '5.1.4'
 # load miniprofiler before pg because otherwise sqlite queries aren't being logged
 gem 'rack-mini-profiler'
-gem 'pg'
+gem 'pg', '< 1.0'
 gem 'sqlite3'
 
 gem 'devise'
@@ -27,7 +27,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-bootstrap', '~> 3'
 end
 
 group :development do
@@ -39,7 +39,6 @@ group :development do
   gem 'awesome_print'
 
   gem 'web-console'
-  gem 'quiet_assets'
   gem 'spring'
   gem 'spring-commands-rspec'
 end

@@ -5,8 +5,7 @@ class ImportersController < ApplicationController
     @importers = current_user.importers
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @importer = current_user.importers.new

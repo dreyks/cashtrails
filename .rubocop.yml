@@ -1,10 +1,17 @@
 AllCops:
   Exclude:
     - 'db/schema.rb'
+    - bin/*
+
+Bundler/OrderedGems:
+  Enabled: false
 
 Metrics/MethodLength:
   Exclude:
     - 'config/initializers/rack_mini_profiler.rb'
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
 
 Lint/HandleExceptions:
   Enabled: false
@@ -20,14 +27,20 @@ Metrics/LineLength:
 Style/AndOr:
   EnforcedStyle: conditionals
 
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
-Style/IfUnlessModifier:
-  MaxLineLength: 80
+Style/FormatStringToken:
+  Enabled: false
 
 Style/NumericLiterals:
   Enabled: false
 
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+Style/SymbolArray:
+  Enabled: false

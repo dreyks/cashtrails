@@ -1,6 +1,5 @@
 class DatabasesController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     render :new_db and return unless (file = params[:upload][:file]).present?

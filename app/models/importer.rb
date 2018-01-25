@@ -47,7 +47,7 @@ class Importer < ActiveRecord::Base
   # foreign_amount_field to source_foreign_amount + source_foreign_currency_id
   def extract_amount(key, value)
     amount_attr = "source_#{key.to_s.sub('_field', '')}".to_sym
-    currency_id_attr = "#{amount_attr.to_s.sub('amount', 'currency_id')}".to_sym
+    currency_id_attr = amount_attr.to_s.sub('amount', 'currency_id').to_s.to_sym
 
     out = {
       amount_attr => nil,

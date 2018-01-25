@@ -6,13 +6,13 @@ class Record < CashTrailsModel
 
   # fields where 0 has to be treated as +nil+
   NILLED_ZEROS = [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid,
-                  :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid]
+                  :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid].freeze
 
   alias_attribute :source_currency_id,          :currency1IDOrInvalid
   alias_attribute :source_foreign_currency_id,  :currency2IDOrInvalid
   alias_attribute :target_currency_id,          :currency3IDOrInvalid
   alias_attribute :target_foreign_currency_id,  :currency4IDOrInvalid
-  alias_attribute :kind,  :recordKind
+  alias_attribute :kind, :recordKind
 
   belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
   belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid
@@ -57,7 +57,7 @@ class Record < CashTrailsModel
 
   # Helper methods to assign Floats
   # All amounts are stored as Fixnum
-  %w(source source_foreign target target_foreign).each_with_index do |m, i|
+  %w[source source_foreign target target_foreign].each_with_index do |m, i|
     define_method "#{m}_amount" do                  # def source_amount
       send("amount#{i + 1}").to_f / 100             #   amount1.to_f / 100
     end                                             # end
@@ -115,14 +115,10 @@ class Record < CashTrailsModel
   def check_amount_sign
     a1 = source_amount
     a2 = source_foreign_amount
-    if a1 && a2 && (a1 < 0 || a2 < 0)
-      assign_attributes(source_amount: -(a1.abs), source_foreign_amount: -(a2.abs))
-    end
+    assign_attributes(source_amount: -a1.abs, source_foreign_amount: -a2.abs) if a1 && a2 && (a1 < 0 || a2 < 0)
   end
 
-  def check_kind
-
-  end
+  def check_kind; end
 
   def convert_zeros_to_nils
     NILLED_ZEROS.each do |c|

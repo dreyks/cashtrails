@@ -15,7 +15,7 @@ timeout 30
 
 pid 'tmp/pids/unicorn.pid'
 
-unless 'development' == ENV['RAILS_ENV']
+unless ENV['RAILS_ENV'] == 'development'
   stderr_path 'log/unicorn.stderr.log'
   stdout_path 'log/unicorn.stdout.log'
 end

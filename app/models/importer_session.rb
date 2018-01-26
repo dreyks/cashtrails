@@ -44,7 +44,7 @@ class ImporterSession < ActiveRecord::Base
   end
 
   def create_items
-    parsed_data.each do |item_data|
+    (parsed_data || []).each do |item_data|
       item = items.new
       record = Record.new(importer.parse_record_data(item_data))
       record.source_account = account

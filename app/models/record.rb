@@ -14,13 +14,13 @@ class Record < CashTrailsModel
   alias_attribute :target_foreign_currency_id,  :currency4IDOrInvalid
   alias_attribute :kind, :recordKind
 
-  belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid, required: false
-  belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid
+  belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
+  belongs_to :target_account, class_name: 'Account', foreign_key: :account2IDOrInvalid, required: false
 
-  belongs_to :source_currency,         class_name: 'Currency', foreign_key: :currency1IDOrInvalid, required: false
-  belongs_to :source_currency_foreign, class_name: 'Currency', foreign_key: :currency2IDOrInvalid
-  belongs_to :target_currency,         class_name: 'Currency', foreign_key: :currency3IDOrInvalid
-  belongs_to :target_currency_foreign, class_name: 'Currency', foreign_key: :currency4IDOrInvalid
+  belongs_to :source_currency,         class_name: 'Currency', foreign_key: :currency1IDOrInvalid
+  belongs_to :source_currency_foreign, class_name: 'Currency', foreign_key: :currency2IDOrInvalid, required: false
+  belongs_to :target_currency,         class_name: 'Currency', foreign_key: :currency3IDOrInvalid, required: false
+  belongs_to :target_currency_foreign, class_name: 'Currency', foreign_key: :currency4IDOrInvalid, required: false
 
   has_many :records_tags, foreign_key: :recordID
   has_many :tags, through: :records_tags

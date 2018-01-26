@@ -30,6 +30,7 @@ class Record < CashTrailsModel
   after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros
+  before_create :generate_uuid
 
   # if this has to be changed to a named scope, account for the need of
   #   importer_session.items.includes(record: [_all_this_includes_here_])
@@ -124,7 +125,7 @@ class Record < CashTrailsModel
     NILLED_ZEROS.each do |c|
       if read_attribute(c) && read_attribute(c).zero?
         write_attribute(c, nil)
-        clear_attribute_changes(c)
+        clear_attribute_change(c)
       end
     end
   end
@@ -133,5 +134,9 @@ class Record < CashTrailsModel
     NILLED_ZEROS.each do |c|
       write_attribute(c, 0) if read_attribute(c).nil?
     end
+  end
+
+  def generate_uuid
+    self.recordUUID = SecureRandom.uuid.tr('-', '')
   end
 end

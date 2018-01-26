@@ -1,10 +1,10 @@
-%h1 Starting import
+%h1 Starting import using #{@importer_session.importer}
 
 .row
   .col-md-6
     = simple_form_for @importer_session, url: importer_importer_sessions_path do |f|
       = f.error_notification
-      = f.association :importer, disabled: true
+      = f.association :importer, as: :hidden
       = f.association :account
       = f.input :file, as: :file
       .pull-right

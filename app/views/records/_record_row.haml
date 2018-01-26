@@ -10,5 +10,6 @@
     - record.tags.each do |tag|
       %p= tag
   .td= record.group.presence
+  .td= record.party.presence
   .td= record.note
   .td= link_to 'Edit', edit_record_path(record), remote: true

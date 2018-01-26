@@ -26,6 +26,7 @@ class Record < CashTrailsModel
   has_many :tags, through: :records_tags
 
   belongs_to :group, foreign_key: :groupIDOrInvalid, required: false
+  belongs_to :party, foreign_key: :partyIDOrInvalid, required: false
 
   after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?

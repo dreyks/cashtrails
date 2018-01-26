@@ -14,9 +14,9 @@ class ImporterSession < ActiveRecord::Base
   # after_save :create_items
 
   def import
-    parse
+    records_data = parse.presence or return
     save
-    create_items
+    create_items(records_data)
   end
 
   def commit
@@ -30,29 +30,24 @@ class ImporterSession < ActiveRecord::Base
 
   private
 
-  attr_accessor :parsed_data
-
   def parse
-    self.parsed_data = importer.call(file.path)
-    true
+    importer.call(file.path)
   rescue CSV::MalformedCSVError
     errors.add(:file, 'Not a CSV file')
-    false
+    nil
   rescue KeyError # => e
     errors.add(:file, 'Header field mismatch')
-    false
+    nil
   end
 
-  def create_items
-    (parsed_data || []).each do |item_data|
-      item = items.new
-      record = Record.new(importer.parse_record_data(item_data))
+  def create_items(records_data)
+    records_data.each do |record_data|
+      record = Record.new(record_data.merge(kind: Record::KIND_EXPENSE))
       record.source_account = account
 
-      next unless record.save
+      record.save or next
 
-      item.record = record
-      item.save
+      items << ImporterSessionItem.new(record: record)
     end
   end
 end

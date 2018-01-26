@@ -7,6 +7,7 @@
       %th Amount
       %th Tags
       %th Group
+      %th Party
     - @records.each do |record|
       %tr
         %td= record.occured_at.strftime('%e %b %Y %H:%M')
@@ -21,4 +22,6 @@
             %p= tag
         %td
           = record.group.presence
+        %td
+          = record.party.presence
 = paginate @records

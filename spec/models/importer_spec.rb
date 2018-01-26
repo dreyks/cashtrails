@@ -1,31 +1,54 @@
 require 'rails_helper'
 
 describe Importer do
-  let(:pumb_importer) { create(:pumb_importer) }
-  let(:sample_data) do
-    {
-      date_field: '22.10.2015 21:01',
-      description_field: 'Покупка (оплата) з використанням платіжної кратки (по карте: *8314) AUCHAN015 KIYEV UA',
-      amount_field: '612,93 UAH',
-      foreign_amount_field: '-612,93 UAH'
-    }
-  end
 
   it 'has a valid factory' do
     expect(build(:importer)).to be_valid
   end
 
-  describe '#call' do
-    let(:sample_file) { File.open(Rails.root.join('spec/support/pumb_sample.csv')) }
+  describe '#parse' do
+    subject { importer.send(:parse, sample_file).first }
 
-    after(:each) { sample_file.close if sample_file.respond_to? :close }
+    context 'pumb' do
+      let(:importer) { create(:importer, :pumb) }
+      let(:sample_file) { File.new(Rails.root.join('spec/support/pumb_sample.csv')) }
+      let(:sample_data) do
+        {
+          date_field: '22.10.2015 21:01',
+          description_field: 'Покупка (оплата) з використанням платіжної кратки (по карте: *8314) AUCHAN015 KIYEV UA',
+          amount_field: '612,93 UAH',
+          foreign_amount_field: '-612,93 UAH'
+        }
+      end
 
-    it 'parses csv files with headers' do
-      expect(pumb_importer.call(sample_file)).to eq [sample_data]
+      it { is_expected.to eq sample_data }
+    end
+
+    context 'ukrsib' do
+      let(:importer) { create(:importer, :ukrsib) }
+      let(:sample_file) { File.new(Rails.root.join('spec/support/ukrsib_sample.csv')) }
+      let(:sample_data) do
+        {
+          date_field: '08.11.2017 08:52',
+          description_field: 'payment for services rendered oninvoice RUB-1706 dated 31.10.2017Agr. No.68/RUB 10.04.2017FOP R. B. Usherenko/000009196380621R W CONSULTING INC.679 TITICUS RDNO',
+          amount_field: '4251.00 USD'
+        }
+      end
+
+      it { is_expected.to eq sample_data }
     end
   end
 
-  describe '#parse_record_data' do
+  describe '#convert_to_record_data' do
+    let(:importer) { create(:importer, :pumb) }
+    let(:sample_data) do
+      {
+        date_field: '22.10.2015 21:01',
+        description_field: 'Покупка (оплата) з використанням платіжної кратки (по карте: *8314) AUCHAN015 KIYEV UA',
+        amount_field: '612,93 UAH',
+        foreign_amount_field: '-612,93 UAH'
+      }
+    end
     let(:currency_uah) { create(:currency, currencyCode: 'UAH') }
 
     it 'returns data hash to create a Record' do
@@ -37,7 +60,7 @@ describe Importer do
         source_foreign_amount: -612.93,
         date: '22.10.2015 21:01'.in_time_zone('Europe/Kiev')
       }
-      expect(pumb_importer.parse_record_data(sample_data)).to eq cmp
+      expect(importer.send(:convert_to_record_data, sample_data)).to eq cmp
     end
   end
 end

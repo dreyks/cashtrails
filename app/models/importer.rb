@@ -12,12 +12,31 @@ class Importer < ActiveRecord::Base
   end
 
   def call(file)
+    parse(file).map do |data_hash|
+      convert_to_record_data(data_hash)
+    end
+  end
+
+  private
+
+  def parse(file)
     [].tap do |out|
       # TODO: output encoding needed?
-      CSV.foreach(file, headers: true, encoding: encoding) do |line|
+      CSV.foreach(file, headers: true, encoding: encoding, col_sep: column_separator) do |line|
         {}.tap do |item|
           [:date_field, :amount_field, :foreign_amount_field, :description_field].each do |field|
-            item[field] = line.fetch(send(field))
+            value = send(field) or next
+
+            item[field] = handle_and(value) do |v|
+              handle_or(v) do |field_name|
+                field_value = line.fetch(field_name.sub('-', '')) or next
+
+                result = [field_value]
+                result.unshift('-') if field_name.starts_with?('-')
+
+                result.join
+              end
+            end
           end
           out << item
         end
@@ -25,7 +44,21 @@ class Importer < ActiveRecord::Base
     end
   end
 
-  def parse_record_data(data_hash)
+  def handle_and(value)
+    value.split('&').map do |v|
+      yield v
+    end.join ' '
+  end
+
+  def handle_or(value)
+    value.split('|').each do |v|
+      res = yield v
+      return res if res
+    end
+    nil
+  end
+
+  def convert_to_record_data(data_hash)
     {}.tap do |record_hash|
       data_hash.each do |key, value|
         case key
@@ -40,8 +73,6 @@ class Importer < ActiveRecord::Base
       end
     end
   end
-
-  private
 
   # Converts amount_field to source_amount + source_currency_id
   # foreign_amount_field to source_foreign_amount + source_foreign_currency_id

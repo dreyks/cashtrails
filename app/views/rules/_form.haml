@@ -1,0 +1,5 @@
+.row
+  .col-md-6
+    = simple_form_for [@importer, @rule] do |f|
+      = f.input :trigger
+      = f.button :submit, @rule.new_record? ? 'Create' : 'Update'

@@ -2,10 +2,13 @@ require 'csv'
 
 class Importer < ActiveRecord::Base
   belongs_to :user
+  has_many :rules
 
   validates_presence_of :user, :name
 
   alias_attribute :to_s, :name
+
+  scope :by_user, ->(user) { where(user: user) }
 
   before_save do
     self.encoding ||= 'utf-8'

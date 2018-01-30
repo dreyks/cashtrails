@@ -8,6 +8,7 @@
         %td
           = link_to 'Start import', new_importer_importer_session_path(importer), class: 'btn btn-success'
           = link_to 'Edit', edit_importer_path(importer), class: 'btn btn-warning'
+          = link_to 'Rules', importer_rules_path(importer), class: 'btn btn-warning'
           = link_to 'Delete', importer, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
 
 %br

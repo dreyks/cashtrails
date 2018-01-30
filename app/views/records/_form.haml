@@ -29,6 +29,7 @@
               .form-inline
                 = f.input :source_amount, label: false
                 = f.association :source_currency, label: false
+          = f.association :tags
           = f.association :group
           = f.association :party
           = f.input :note

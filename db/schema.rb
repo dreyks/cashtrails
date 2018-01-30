@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126101745) do
+ActiveRecord::Schema.define(version: 20180130112927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+# Could not dump table "actions" because of following StandardError
+#   Unknown type 'effect' for column 'effect'
 
   create_table "databases", id: :serial, force: :cascade do |t|
     t.integer "user_id"
@@ -48,6 +51,14 @@ ActiveRecord::Schema.define(version: 20180126101745) do
     t.string "description_field"
     t.string "encoding"
     t.string "column_separator", default: ","
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.bigint "importer_id"
+    t.string "trigger", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["importer_id"], name: "index_rules_on_importer_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

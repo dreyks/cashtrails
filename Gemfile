@@ -18,6 +18,7 @@ end
 gem 'kaminari'
 
 gem 'simple_form'
+gem 'enum_help'
 
 gem 'rails-footnotes'
 

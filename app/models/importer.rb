@@ -16,7 +16,11 @@ class Importer < ActiveRecord::Base
 
   def call(file)
     parse(file).map do |data_hash|
-      convert_to_record_data(data_hash)
+      record_data = convert_to_record_data(data_hash)
+      create_record(record_data) do |record|
+        yield record if block_given?
+        apply_rules(record)
+      end
     end
   end
 
@@ -90,8 +94,40 @@ class Importer < ActiveRecord::Base
 
     amount, currency_code = value.split(' ')
 
-    return out unless (currency = Currency.where(currencyCode: currency_code).first)
+    currency = Currency.where(currencyCode: currency_code).first or return out
 
     out.update(amount_attr => amount.tr(',', '.').to_f, currency_id_attr => currency.id)
+  end
+
+  def create_record(record_hash)
+    record = Record.new(record_hash)
+    yield record if block_given?
+    record.tap(&:save)
+  rescue FrozenError # record was removed by the rule
+    nil
+  end
+
+  def apply_rules(record)
+    rules.each do |rule|
+      if record.note =~ Regexp.new(rule.trigger)
+        rule.effects.each do |effect|
+          if effect.change_kind?
+            record.kind = effect.value if effect.value.in? Record.kinds
+          elsif effect.change_source_account?
+            record.source_account = Account.find(effect.value)
+          elsif effect.change_target_account?
+            record.target_account = Account.find(effect.value)
+            record.target_currency = record.source_currency
+            record.kind = Record::KIND_TRANSFER
+          elsif effect.add_tag?
+            record.tags << Tag.find(effect.value)
+          elsif effect.change_party?
+            record.party = effect.value
+          elsif effect.remove_record?
+            record.destroy
+          end
+        end
+      end
+    end
   end
 end

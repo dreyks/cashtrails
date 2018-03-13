@@ -1,0 +1,19 @@
+%h1.page-header Rule effects
+.table-responsive
+  %table.table.table-striped
+    %tr
+      %th Type
+      %th Value
+      %th
+    - @effects.each do |effect|
+      %tr
+        %td= effect.type
+        %td= effect.human_value
+        %td
+          = link_to 'Edit', edit_effect_path(effect), class: 'btn btn-warning'
+          = link_to 'Delete', effect, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
+        %td
+= paginate @effects
+
+= link_to 'Add effect', new_rule_effect_path, class: 'btn btn-primary'
+= link_to 'Back to rules', importer_rules_path(rule.importer)

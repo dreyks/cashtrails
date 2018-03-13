@@ -15,15 +15,15 @@ ActiveRecord::Schema.define(version: 20180130112927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-# Could not dump table "actions" because of following StandardError
-#   Unknown type 'effect' for column 'effect'
-
   create_table "databases", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+# Could not dump table "effects" because of following StandardError
+#   Unknown type 'effect' for column 'type'
 
   create_table "importer_session_items", id: :serial, force: :cascade do |t|
     t.integer "importer_session_id"

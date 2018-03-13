@@ -1,0 +1,6 @@
+.row
+  .col-md-6
+    = simple_form_for [@rule, @effect] do |f|
+      = f.input :type
+      = f.input :value, as: f.object.value_type, **f.object.value_opts
+      = f.button :submit, @effect.new_record? ? 'Create' : 'Update'

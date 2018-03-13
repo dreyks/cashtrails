@@ -9,8 +9,10 @@
         %td= rule.trigger
         %td
           = link_to 'Edit', edit_rule_path(rule), class: 'btn btn-warning'
+          = link_to 'Effects', rule_effects_path(rule), class: 'btn btn-warning'
           = link_to 'Delete', rule, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
         %td
 = paginate @rules
 
 = link_to 'Add rule', new_importer_rule_path, class: 'btn btn-primary'
+= link_to 'Back to importers', importers_path

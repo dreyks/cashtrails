@@ -22,8 +22,8 @@ class Record < CashTrailsModel
   belongs_to :target_currency,         class_name: 'Currency', foreign_key: :currency3IDOrInvalid, required: false
   belongs_to :target_currency_foreign, class_name: 'Currency', foreign_key: :currency4IDOrInvalid, required: false
 
-  has_many :records_tags, foreign_key: :recordID
-  has_many :tags, through: :records_tags
+  has_many :records_tags, foreign_key: :recordID, inverse_of: :record, dependent: :delete_all
+  has_many :tags, through: :records_tags, inverse_of: :records
 
   belongs_to :group, foreign_key: :groupIDOrInvalid, required: false
   belongs_to :party, foreign_key: :partyIDOrInvalid, required: false

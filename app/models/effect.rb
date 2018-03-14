@@ -17,11 +17,13 @@ class Effect < ApplicationRecord
 
   def human_value
     case type
-    when 'source_account', 'target_account'
+    when 'change_kind'
+      Record.kinds[value.to_i]
+    when 'change_source_account', 'change_target_account'
       Account.find(value.to_i)
-    when 'tag'
+    when 'add_tag'
       Tag.find(value.to_i)
-    when :party
+    when 'change_party'
       Party.find(value.to_i)
     else
       ''

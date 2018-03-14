@@ -25,6 +25,8 @@ class Effect < ApplicationRecord
       Tag.find(value.to_i)
     when 'change_party'
       Party.find(value.to_i)
+    when 'change_group'
+      Group.find(value.to_i)
     else
       ''
     end
@@ -34,7 +36,7 @@ class Effect < ApplicationRecord
 
   def value_type
     case type
-    when 'change_kind', 'change_source_account', 'change_target_account', 'add_tag', 'change_party'
+    when 'change_kind', 'change_source_account', 'change_target_account', 'add_tag', 'change_party', 'change_group'
       :select
     when 'remove_record'
       :hidden
@@ -53,6 +55,8 @@ class Effect < ApplicationRecord
       {collection: Tag.all}
     when 'change_party'
       {collection: Party.all}
+    when 'change_group'
+      {collection: Group.all}
     else
       {}
     end

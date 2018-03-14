@@ -123,6 +123,8 @@ class Importer < ActiveRecord::Base
             record.tags << Tag.find(effect.value)
           elsif effect.change_party?
             record.party = effect.value
+          elsif effect.change_group?
+            record.group = effect.value
           elsif effect.remove_record?
             record.destroy
           end

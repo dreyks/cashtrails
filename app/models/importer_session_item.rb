@@ -1,4 +1,4 @@
 class ImporterSessionItem < ActiveRecord::Base
   belongs_to :importer_session
-  belongs_to :record
+  belongs_to :record, dependent: :destroy
 end

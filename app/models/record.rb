@@ -5,8 +5,10 @@ class Record < CashTrailsModel
   KIND_ADJUSTMENT = 3
 
   # fields where 0 has to be treated as +nil+
-  NILLED_ZEROS = [:currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid,
-                  :currency4IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid].freeze
+  NILLED_ZEROS = [:amount1, :amount2, :amount3, :amount4,
+                  :currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid,
+                  :account1IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid, :partyIDOrInvalid,
+                  :sample, :hasForeignAmount1, :hasForeignAmount2, :tagCount, :fileCount].freeze
 
   alias_attribute :source_currency_id,          :currency1IDOrInvalid
   alias_attribute :source_foreign_currency_id,  :currency2IDOrInvalid
@@ -30,8 +32,8 @@ class Record < CashTrailsModel
 
   after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
-  before_save :convert_nils_to_zeros
-  before_create :generate_uuid
+  before_save :convert_nils_to_zeros, :set_modification_timestamp
+  before_create :generate_uuid, :set_timestamps
 
   # if this has to be changed to a named scope, account for the need of
   #   importer_session.items.includes(record: [_all_this_includes_here_])
@@ -139,5 +141,13 @@ class Record < CashTrailsModel
 
   def generate_uuid
     self.recordUUID = SecureRandom.uuid.tr('-', '')
+  end
+
+  def set_timestamps
+    self.creationTimestamp = self.modificationTimestamp = Time.now.to_i
+  end
+
+  def set_modification_timestamp
+    self.modificationTimestamp = Time.now.to_i
   end
 end

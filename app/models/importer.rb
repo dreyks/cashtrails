@@ -111,6 +111,7 @@ class Importer < ActiveRecord::Base
     rules.each do |rule|
       if record.note =~ Regexp.new(rule.trigger)
         rule.effects.each do |effect|
+          p effect
           if effect.change_kind?
             record.kind = effect.value if effect.value.in? Record.kinds
           elsif effect.change_source_account?
@@ -122,9 +123,9 @@ class Importer < ActiveRecord::Base
           elsif effect.add_tag?
             record.tags << Tag.find(effect.value)
           elsif effect.change_party?
-            record.party = effect.value
+            record.party = Party.find(effect.value)
           elsif effect.change_group?
-            record.group = effect.value
+            record.group = Group.find(effect.value)
           elsif effect.remove_record?
             record.destroy
           end

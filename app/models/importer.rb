@@ -111,7 +111,6 @@ class Importer < ActiveRecord::Base
     rules.each do |rule|
       if record.note =~ Regexp.new(rule.trigger)
         rule.effects.each do |effect|
-          p effect
           if effect.change_kind?
             record.kind = effect.value if effect.value.in? Record.kinds
           elsif effect.change_source_account?
@@ -122,6 +121,7 @@ class Importer < ActiveRecord::Base
             record.kind = Record::KIND_TRANSFER
           elsif effect.add_tag?
             record.tags << Tag.find(effect.value)
+            record.records_tags.each_with_index { |rt, i| rt.tagRelaxedOrderOrMinusOne = i }
           elsif effect.change_party?
             record.party = Party.find(effect.value)
           elsif effect.change_group?

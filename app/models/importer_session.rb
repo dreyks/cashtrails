@@ -19,6 +19,7 @@ class ImporterSession < ActiveRecord::Base
     records = parse do |record|
       record.kind = Record::KIND_EXPENSE
       record.source_account = account
+      record.build_record_tag_zero
     end.compact
 
     records.each do |record|

@@ -1,1 +1,2 @@
 $('#record_#{@record.id}').replaceWith("#{j(render partial: 'record_row', locals: {record: @record})}")
+$('#edit_record_modal').modal('hide')

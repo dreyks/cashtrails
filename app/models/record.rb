@@ -68,7 +68,7 @@ class Record < CashTrailsModel
     end                                             # end
 
     define_method "#{m}_amount=" do |amt|           # def source_amount=(amt)
-      amt = (amt * 100).round if amt                #   amt = (amt * 100).round if amt
+      amt = (amt.to_f * 100).round if amt           #   amt = (amt * 100).round if amt
       send("amount#{i + 1}=", amt)                  #   self.amount1 = amt
     end                                             # end
   end
@@ -101,6 +101,10 @@ class Record < CashTrailsModel
 
   def occured_at
     DateTime.parse("#{localDate}#{format('%06d', localTime)}")
+  end
+
+  def occured_at=(v)
+    self.date = Time.new(*v.values)
   end
 
   private

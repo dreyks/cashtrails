@@ -1,7 +1,8 @@
 .modal.fade#edit_record_modal
   .modal-dialog.modal-lg
     .modal-content
-      = simple_form_for @record do |f|
+      = simple_form_for @record, remote: true do |f|
+        = f.input :id, as: :hidden
         = f.input :kind, as: :hidden
         .modal-header
           .row
@@ -29,6 +30,13 @@
               .form-inline
                 = f.input :source_amount, label: false
                 = f.association :source_currency, label: false
+          .form-group
+            .col-xs-3.text-right
+              = f.label :target_amount
+            .col-xs-9
+              .form-inline
+                = f.input :target_amount, label: false
+                = f.association :target_currency, label: false
           = f.association :tags
           = f.association :group
           = f.association :party

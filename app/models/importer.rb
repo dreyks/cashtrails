@@ -112,7 +112,7 @@ class Importer < ActiveRecord::Base
       if record.note =~ Regexp.new(rule.trigger)
         rule.effects.each do |effect|
           if effect.change_kind?
-            record.kind = effect.value if effect.value.in? Record.kinds
+            record.kind = effect.value if effect.value.to_i.in? Record.kinds
           elsif effect.change_source_account?
             record.source_account = Account.find(effect.value)
           elsif effect.change_target_account?

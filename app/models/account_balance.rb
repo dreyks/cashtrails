@@ -7,4 +7,11 @@ class AccountBalance < CashTrailsModel
   def amount_text
     "#{currency.currencyCode} #{format('%.2f', amount.to_f / 100)}"
   end
+
+  def save
+    persisted? or return super
+    valid? or return
+
+    self.class.where(account: account, currency: currency).update_all(amount: amount)
+  end
 end

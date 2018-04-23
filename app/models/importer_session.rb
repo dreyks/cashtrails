@@ -27,6 +27,7 @@ class ImporterSession < ActiveRecord::Base
   end
 
   def commit
+    update_account_balances
     destroy
   end
 
@@ -47,5 +48,26 @@ class ImporterSession < ActiveRecord::Base
   rescue KeyError # => e
     errors.add(:file, 'Header field mismatch')
     nil
+  end
+
+  def update_account_balances
+    items.each do |item|
+      record = item.record
+
+      source_balance = record.source_account.balances.find_or_initialize_by(currency: record.source_currency) do |b|
+        b.amount = 0
+      end
+      target_balance = if record.transfer?
+                         record.target_account.balances.find_or_initialize_by(currency: record.target_currency) do |b|
+                           b.amount = 0
+                         end
+                       end
+
+      source_balance.amount += record.source_amount * 100
+      target_balance.amount += record.target_amount * 100 if target_balance
+
+      source_balance.save
+      target_balance&.save
+    end
   end
 end

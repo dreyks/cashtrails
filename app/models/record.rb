@@ -34,7 +34,7 @@ class Record < CashTrailsModel
   after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros, :set_modification_timestamp
-  before_create :generate_uuid, :set_timestamps
+  before_create :generate_uuid, :set_timestamps, :build_record_tag_zero
 
   # if this has to be changed to a named scope, account for the need of
   #   importer_session.items.includes(record: [_all_this_includes_here_])

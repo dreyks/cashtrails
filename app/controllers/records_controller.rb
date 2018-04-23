@@ -25,6 +25,7 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(
+      :id,
       :kind,
       :occured_at,
       :account1IDOrInvalid,
@@ -33,7 +34,7 @@ class RecordsController < ApplicationController
       :account2IDOrInvalid,
       :target_amount,
       :currency3IDOrInvalid,
-      :tag_ids,
+      {tag_ids: []},
       :groupIDOrInvalid,
       :partyIDOrInvalid,
       :note

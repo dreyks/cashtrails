@@ -24,17 +24,19 @@ class Record < CashTrailsModel
   belongs_to :target_currency,         class_name: 'Currency', foreign_key: :currency3IDOrInvalid, required: false
   belongs_to :target_currency_foreign, class_name: 'Currency', foreign_key: :currency4IDOrInvalid, required: false
 
-  has_one :record_tag_zero, foreign_key: :recordID, inverse_of: :record, dependent: :delete
+  has_one :tag_minus_one, foreign_key: :recordID, inverse_of: :record, dependent: :delete
   has_many :records_tags, foreign_key: :recordID, inverse_of: :record, dependent: :delete_all
   has_many :tags, through: :records_tags, inverse_of: :records
 
   belongs_to :group, foreign_key: :groupIDOrInvalid, required: false
   belongs_to :party, foreign_key: :partyIDOrInvalid, required: false
 
+  has_one :file_minus_one, foreign_key: :recordID, inverse_of: :record, dependent: :delete
+
   after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
   before_save :convert_nils_to_zeros, :set_modification_timestamp
-  before_create :generate_uuid, :set_timestamps, :build_record_tag_zero
+  before_create :generate_uuid, :set_timestamps, :build_tag_minus_one, :build_file_minus_one
 
   # if this has to be changed to a named scope, account for the need of
   #   importer_session.items.includes(record: [_all_this_includes_here_])

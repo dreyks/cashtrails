@@ -27,7 +27,10 @@ class ImporterSession < ActiveRecord::Base
   end
 
   def commit
-    update_account_balances
+    items.each do |item|
+      update_account_balances(item.record)
+      update_local_history(item.record)
+    end
     destroy
   end
 
@@ -50,24 +53,28 @@ class ImporterSession < ActiveRecord::Base
     nil
   end
 
-  def update_account_balances
-    items.each do |item|
-      record = item.record
-
-      source_balance = record.source_account.balances.find_or_initialize_by(currency: record.source_currency) do |b|
-        b.amount = 0
-      end
-      target_balance = if record.transfer?
-                         record.target_account.balances.find_or_initialize_by(currency: record.target_currency) do |b|
-                           b.amount = 0
-                         end
-                       end
-
-      source_balance.amount += record.source_amount * 100
-      target_balance.amount += record.target_amount * 100 if target_balance
-
-      source_balance.save
-      target_balance&.save
+  def update_account_balances(record)
+    source_balance = record.source_account.balances.find_or_initialize_by(currency: record.source_currency) do |b|
+      b.amount = 0
     end
+    target_balance = if record.transfer?
+                       record.target_account.balances.find_or_initialize_by(currency: record.target_currency) do |b|
+                         b.amount = 0
+                       end
+                     end
+
+    source_balance.amount += record.source_amount * 100
+    target_balance.amount += record.target_amount * 100 if target_balance
+
+    source_balance.save
+    target_balance&.save
+  end
+
+  def update_local_history(record)
+    history = LocalHistory.find_or_initialize_by(monthCode: record.localDate / 100) do |h|
+      h.recordCount = 0
+    end
+    history.recordCount += 1
+    history.save
   end
 end

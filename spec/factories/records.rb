@@ -7,6 +7,9 @@ FactoryBot.define do
     target_currency
     target_currency_foreign
 
+    localDate { Date.today.strftime('%Y%m%d') }
+    localTime { Time.now.strftime('%H%M') }
+
     factory :record_with_tags do
       after(:create) do |record, _e|
         create_list(:tag, 5, record: record)

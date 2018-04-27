@@ -63,8 +63,8 @@ class ImporterSession < ActiveRecord::Base
                        end
                      end
 
-    source_balance.amount += record.source_amount * 100
-    target_balance.amount += record.target_amount * 100 if target_balance
+    source_balance.amount += record.source_amount
+    target_balance.amount += record.target_amount if target_balance
 
     source_balance.save
     target_balance&.save

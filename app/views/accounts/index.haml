@@ -12,5 +12,5 @@
           %td= account.name
           %td
             - account.balances.each do |balance|
-              %p{class: balance.amount >= 0 ? 'text-success' : 'text-danger'}
+              %p{class: balance.amount&.<(0) ? 'text-danger' : 'text-success'}
                 = balance.amount_text

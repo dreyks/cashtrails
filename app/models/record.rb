@@ -4,16 +4,33 @@ class Record < CashTrailsModel
   KIND_TRANSFER = 2
   KIND_ADJUSTMENT = 3
 
-  # fields where 0 has to be treated as +nil+
-  NILLED_ZEROS = [:amount1, :amount2, :amount3, :amount4,
-                  :currency1IDOrInvalid, :currency2IDOrInvalid, :currency3IDOrInvalid, :currency4IDOrInvalid,
-                  :account1IDOrInvalid, :account2IDOrInvalid, :groupIDOrInvalid, :partyIDOrInvalid,
-                  :sample, :hasForeignAmount1, :hasForeignAmount2, :tagCount, :fileCount].freeze
+  attribute :amount1, :amount, zeroed_nil: true
+  attribute :amount2, :amount, zeroed_nil: true
+  attribute :amount3, :amount, zeroed_nil: true
+  attribute :amount4, :amount, zeroed_nil: true
 
-  alias_attribute :source_currency_id,          :currency1IDOrInvalid
-  alias_attribute :source_foreign_currency_id,  :currency2IDOrInvalid
-  alias_attribute :target_currency_id,          :currency3IDOrInvalid
-  alias_attribute :target_foreign_currency_id,  :currency4IDOrInvalid
+  attribute :currency1IDOrInvalid, :integer, zeroed_nil: true
+  attribute :currency2IDOrInvalid, :integer, zeroed_nil: true
+  attribute :currency3IDOrInvalid, :integer, zeroed_nil: true
+  attribute :currency4IDOrInvalid, :integer, zeroed_nil: true
+  attribute :account1IDOrInvalid, :integer, zeroed_nil: true
+  attribute :account2IDOrInvalid, :integer, zeroed_nil: true
+  attribute :groupIDOrInvalid, :integer, zeroed_nil: true
+  attribute :partyIDOrInvalid, :integer, zeroed_nil: true
+  attribute :sample, :integer, zeroed_nil: true
+  attribute :hasForeignAmount1, :integer, zeroed_nil: true
+  attribute :hasForeignAmount2, :integer, zeroed_nil: true
+  attribute :tagCount, :integer, zeroed_nil: true
+  attribute :fileCount, :integer, zeroed_nil: true
+
+  alias_attribute :source_amount, :amount1
+  alias_attribute :source_currency_id, :currency1IDOrInvalid
+  alias_attribute :source_foreign_amount, :amount2
+  alias_attribute :source_foreign_currency_id, :currency2IDOrInvalid
+  alias_attribute :target_amount, :amount3
+  alias_attribute :target_currency_id, :currency3IDOrInvalid
+  alias_attribute :target_foreign_amount, :amount4
+  alias_attribute :target_foreign_currency_id, :currency4IDOrInvalid
   alias_attribute :kind, :recordKind
 
   belongs_to :source_account, class_name: 'Account', foreign_key: :account1IDOrInvalid
@@ -33,9 +50,8 @@ class Record < CashTrailsModel
 
   has_one :file_minus_one, foreign_key: :recordID, inverse_of: :record, dependent: :delete
 
-  after_initialize :convert_zeros_to_nils, if: :persisted?
   after_initialize :sanitize, unless: :persisted?
-  before_save :convert_nils_to_zeros, :set_modification_timestamp
+  before_save :set_modification_timestamp
   before_create :generate_uuid, :set_timestamps, :build_tag_minus_one, :build_file_minus_one
 
   # if this has to be changed to a named scope, account for the need of
@@ -62,19 +78,6 @@ class Record < CashTrailsModel
     }
   end
 
-  # Helper methods to assign Floats
-  # All amounts are stored as Fixnum
-  %w[source source_foreign target target_foreign].each_with_index do |m, i|
-    define_method "#{m}_amount" do                  # def source_amount
-      send("amount#{i + 1}").to_f / 100             #   amount1.to_f / 100
-    end                                             # end
-
-    define_method "#{m}_amount=" do |amt|           # def source_amount=(amt)
-      amt = (amt.to_f * 100).round if amt           #   amt = (amt * 100).round if amt
-      send("amount#{i + 1}=", amt)                  #   self.amount1 = amt
-    end                                             # end
-  end
-
   # Helper method to assign all date-related fields at once
   def date=(date)
     self.localDate = date.strftime('%Y%m%d').to_i
@@ -88,16 +91,16 @@ class Record < CashTrailsModel
   end
 
   def source_amount_text
-    Utils.format_money(amount1, source_currency).tap do |out|
-      out << " (#{Utils.format_money(amount2, source_currency_foreign)})" if source_currency_foreign
+    Utils.format_money(source_amount, source_currency).tap do |out|
+      out << " (#{Utils.format_money(source_foreign_amount, source_currency_foreign)})" if source_currency_foreign
     end
   end
 
   def target_amount_text
     return unless transfer?
 
-    Utils.format_money(amount3, target_currency).tap do |out|
-      out << " (#{Utils.format_money(amount4, target_currency_foreign)})" if target_currency_foreign
+    Utils.format_money(target_amount, target_currency).tap do |out|
+      out << " (#{Utils.format_money(target_foreign_amount, target_currency_foreign)})" if target_currency_foreign
     end
   end
 
@@ -130,21 +133,6 @@ class Record < CashTrailsModel
   end
 
   def check_kind; end
-
-  def convert_zeros_to_nils
-    NILLED_ZEROS.each do |c|
-      if read_attribute(c) && read_attribute(c).zero?
-        write_attribute(c, nil)
-        clear_attribute_change(c)
-      end
-    end
-  end
-
-  def convert_nils_to_zeros
-    NILLED_ZEROS.each do |c|
-      write_attribute(c, 0) if read_attribute(c).nil?
-    end
-  end
 
   def generate_uuid
     self.recordUUID = SecureRandom.uuid.tr('-', '')

@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :record do
+    source_amount 10
     source_account
     target_account
     source_currency

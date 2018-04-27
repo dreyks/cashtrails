@@ -1,7 +1,7 @@
 class AccountBalance < CashTrailsModel
   self.table_name = 'accountBalances'
 
-  attribute :amount, :amount, zeroed_nil: true
+  attribute :amount, :amount
 
   belongs_to :currency, foreign_key: :currencyID
   belongs_to :account, foreign_key: :accountIDOrInvalid

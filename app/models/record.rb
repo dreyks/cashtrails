@@ -50,8 +50,8 @@ class Record < CashTrailsModel
 
   has_one :file_minus_one, foreign_key: :recordID, inverse_of: :record, dependent: :delete
 
-  after_initialize :sanitize, unless: :persisted?
-  before_save :set_modification_timestamp
+  after_initialize :sanitize, if: :new_record?
+  before_save :set_modification_timestamp, if: :changed?
   before_create :generate_uuid, :set_timestamps, :build_tag_minus_one, :build_file_minus_one
 
   # if this has to be changed to a named scope, account for the need of

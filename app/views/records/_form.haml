@@ -46,6 +46,6 @@
           = f.button :submit, 'Apply', remote: true
 :javascript
   $('#edit_record_modal .dropdown a').click(function(){
-    $('#record_kind').val($(this).id);
+    $('#record_kind').val($(this).attr('id'));
     $(this).parents('.dropdown').find('.current').text($(this).text());
   });

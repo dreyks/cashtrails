@@ -1,7 +1,4 @@
-= render partial: 'records/record_row',
-         collection: @items.map(&:record),
-         as: :record,
-         layout: 'records/layout_table'
+= render partial: 'records/import_table', locals: {records: @items.map(&:record)}
 
 .pull-right
   = link_to 'Commit', commit_importer_session_path(@importer_session),

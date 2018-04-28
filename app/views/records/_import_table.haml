@@ -1,0 +1,12 @@
+%table.table.header-fixed
+  %thead
+    %tr
+      %th Date
+      %th Account
+      %th Amount
+      %th Tags
+      %th Group
+      %th Party
+      %th.col-md-3 Note
+      %th
+  = render partial: 'records/import_row', collection: records, as: :record

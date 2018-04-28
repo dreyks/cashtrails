@@ -10,27 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
  *= require twbs
  *= require main
  */
-
-.table {
-  display: table;
-}
-
-.table .tr {
-  height: 100%;
-  display: table-row;
-}
-
-.table .thead {
-  height: 100%;
-  display: table-header-group;
-}
-
-.table .tr .td {
-  display: table-cell;
-  float: none;
-  vertical-align: top;
-}

@@ -32,9 +32,14 @@ class ImporterSessionsController < ApplicationController
     importer_session = current_user.importer_sessions.find(params[:id])
     redirect_to importers_url unless importer_session
 
-    importer_session.commit
+    if importer_session.commit
+      redirect_to importers_url, notice: 'Finished importing.'
+    else
+      @importer_session = importer_session
+      @items = @importer_session.items
+      render :show
+    end
 
-    redirect_to importers_url, notice: 'Finished importing.'
   end
 
   private

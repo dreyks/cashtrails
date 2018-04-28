@@ -27,6 +27,8 @@ class ImporterSession < ActiveRecord::Base
   end
 
   def commit
+    validate or return false
+
     items.each do |item|
       update_account_balances(item.record)
       update_local_history(item.record)
@@ -51,6 +53,10 @@ class ImporterSession < ActiveRecord::Base
   rescue KeyError # => e
     errors.add(:file, 'Header field mismatch')
     nil
+  end
+
+  def validate
+    items.map { |item| item.record.valid? }.all?
   end
 
   def update_account_balances(record)

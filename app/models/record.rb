@@ -9,6 +9,8 @@ class Record < CashTrailsModel
   attribute :amount3, :amount, zeroed_nil: true
   attribute :amount4, :amount, zeroed_nil: true
 
+  attribute :sample, :integer, zeroed_nil: true
+  attribute :kind, :integer, zeroed_nil: true
   attribute :currency1IDOrInvalid, :integer, zeroed_nil: true
   attribute :currency2IDOrInvalid, :integer, zeroed_nil: true
   attribute :currency3IDOrInvalid, :integer, zeroed_nil: true
@@ -17,7 +19,6 @@ class Record < CashTrailsModel
   attribute :account2IDOrInvalid, :integer, zeroed_nil: true
   attribute :groupIDOrInvalid, :integer, zeroed_nil: true
   attribute :partyIDOrInvalid, :integer, zeroed_nil: true
-  attribute :sample, :integer, zeroed_nil: true
   attribute :hasForeignAmount1, :integer, zeroed_nil: true
   attribute :hasForeignAmount2, :integer, zeroed_nil: true
   attribute :tagCount, :integer, zeroed_nil: true
@@ -50,9 +51,14 @@ class Record < CashTrailsModel
 
   has_one :file_minus_one, foreign_key: :recordID, inverse_of: :record, dependent: :delete
 
+  validates_presence_of :source_amount
+  validates_presence_of :source_currency
+  validates_presence_of :target_amount, if: :transfer?
+  validates_presence_of :target_currency, if: :transfer?
+
   after_initialize :sanitize, if: :new_record?
   before_save :set_modification_timestamp, if: :changed?
-  before_create :generate_uuid, :set_timestamps, :build_tag_minus_one, :build_file_minus_one
+  before_create :generate_uuid, :set_timestamps, :build_tag_minus_one, :build_file_minus_one, :init_not_inited
 
   # if this has to be changed to a named scope, account for the need of
   #   importer_session.items.includes(record: [_all_this_includes_here_])
@@ -119,7 +125,7 @@ class Record < CashTrailsModel
     check_amount_sign
     check_kind
 
-    return if source_currency_id != source_foreign_currency_id
+    source_currency_id&.nonzero? && source_currency_id == source_foreign_currency_id or return
 
     # unset foreign currency if same with main currency
     assign_attributes(source_foreign_amount: nil, source_foreign_currency_id: nil)
@@ -144,5 +150,23 @@ class Record < CashTrailsModel
 
   def set_modification_timestamp
     self.modificationTimestamp = Time.now.to_i
+  end
+
+  def init_not_inited
+    attrs = @attributes.send(:attributes)
+    attrs.each do |attr_name, attr|
+      next if attr_name == self.class.primary_key
+      next if attr.changed?
+
+      value = case attr.type
+              when ActiveModel::Type::Integer, ActiveModel::Type::Float, Type::ZeroedNil
+                0
+              when ActiveModel::Type::String
+                ''
+              end
+
+      attrs[attr_name] = attr.with_value_from_user(value)
+    end
+    self
   end
 end

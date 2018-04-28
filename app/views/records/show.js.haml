@@ -1,2 +1,2 @@
-$('#record_#{@record.id}').replaceWith("#{j(render partial: 'record_row', locals: {record: @record})}")
+$('#record_#{@record.id}').replaceWith("#{j(render partial: 'import_row', locals: {record: @record})}")
 $('#edit_record_modal').modal('hide')

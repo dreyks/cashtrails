@@ -102,7 +102,7 @@ class Importer < ActiveRecord::Base
   def create_record(record_hash)
     record = Record.new(record_hash)
     yield record if block_given?
-    record.tap(&:save)
+    record.tap { |r| r.save(validate: false) }
   rescue FrozenError # record was removed by the rule
     nil
   end

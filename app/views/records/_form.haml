@@ -20,7 +20,7 @@
               %button.close{data: {dismiss: :modal}}
                 %span &times;
         .modal-body
-          = f.input :occured_at, as: :datetime
+          = f.input :occured_at, as: :datetime, html5: :true
           = f.association :source_account, include_blank: false
           = f.association :target_account
           .form-group

@@ -115,7 +115,7 @@ class Record < CashTrailsModel
   end
 
   def occured_at=(v)
-    self.date = Time.new(*v.values)
+    self.date = Time.parse(v)
   end
 
   private
@@ -123,7 +123,7 @@ class Record < CashTrailsModel
   # Sanity checks on currencies and amounts
   def sanitize
     check_amount_sign
-    check_kind
+    check_foreign_amounts
 
     source_currency_id&.nonzero? && source_currency_id == source_foreign_currency_id or return
 
@@ -138,7 +138,10 @@ class Record < CashTrailsModel
     assign_attributes(source_amount: -a1.abs, source_foreign_amount: -a2.abs) if a1 && a2 && (a1 < 0 || a2 < 0)
   end
 
-  def check_kind; end
+  def check_foreign_amounts
+    self.hasForeignAmount1 = true if source_foreign_amount
+    self.hasForeignAmount2 = true if target_foreign_amount
+  end
 
   def generate_uuid
     self.recordUUID = SecureRandom.uuid.tr('-', '')

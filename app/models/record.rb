@@ -122,23 +122,26 @@ class Record < CashTrailsModel
 
   # Sanity checks on currencies and amounts
   def sanitize
-    check_amount_sign
-    check_foreign_amounts
+    fix_amount_sign
+    fix_foreign_currency
+    fix_foreign_amount
+  end
 
+  # make both amounts negative if at least one of them is
+  def fix_amount_sign
+    a1 = source_amount
+    a2 = source_foreign_amount
+    assign_attributes(source_amount: -a1.abs, source_foreign_amount: -a2.abs) if a1 && a2 && (a1 < 0 || a2 < 0)
+  end
+
+  def fix_foreign_currency
     source_currency_id&.nonzero? && source_currency_id == source_foreign_currency_id or return
 
     # unset foreign currency if same with main currency
     assign_attributes(source_foreign_amount: nil, source_foreign_currency_id: nil)
   end
 
-  # make both amounts negative if at least one of them is
-  def check_amount_sign
-    a1 = source_amount
-    a2 = source_foreign_amount
-    assign_attributes(source_amount: -a1.abs, source_foreign_amount: -a2.abs) if a1 && a2 && (a1 < 0 || a2 < 0)
-  end
-
-  def check_foreign_amounts
+  def fix_foreign_amount
     self.hasForeignAmount1 = true if source_foreign_amount
     self.hasForeignAmount2 = true if target_foreign_amount
   end

@@ -92,11 +92,12 @@ class Importer < ActiveRecord::Base
       currency_id_attr => nil
     }
 
-    amount, currency_code = value.split(' ')
+    amount, _, currency_code = value.rpartition(' ')
+    amount = amount.tr(' ', '').tr(',', '.').to_f
 
     currency = Currency.where(currencyCode: currency_code).first or return out
 
-    out.update(amount_attr => amount.tr(',', '.').to_f, currency_id_attr => currency.id)
+    out.update(amount_attr => amount, currency_id_attr => currency.id)
   end
 
   def create_record(record_hash)

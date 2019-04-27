@@ -3,7 +3,7 @@ cache: bundler
 services:
   - postgresql
 rvm:
-  - 2.5.0
+  - 2.6.2
 bundler_args: --without servers tools
 before_install:
   - gem update --system

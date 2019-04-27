@@ -8,6 +8,8 @@ class Effect < ApplicationRecord
     add_tag: 'add_tag',
     change_party: 'change_party',
     change_group: 'change_group',
+    change_source_sign: 'change_source_sign',
+    change_target_sign: 'change_target_sign',
     remove_record: 'remove_record'
   }
 
@@ -38,7 +40,7 @@ class Effect < ApplicationRecord
     case type
     when 'change_kind', 'change_source_account', 'change_target_account', 'add_tag', 'change_party', 'change_group'
       :select
-    when 'remove_record'
+    when 'remove_record', 'change_source_sign', 'change_target_sign'
       :hidden
     else
       :string

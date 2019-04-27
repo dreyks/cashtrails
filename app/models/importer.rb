@@ -108,6 +108,7 @@ class Importer < ActiveRecord::Base
     nil
   end
 
+  # TODO: transfer_from and transfer_to effects
   def apply_rules(record)
     rules.each do |rule|
       if record.note =~ Regexp.new(rule.trigger)
@@ -120,12 +121,17 @@ class Importer < ActiveRecord::Base
             record.target_account = Account.find(effect.value)
             record.target_currency = record.source_currency
             record.kind = Record::KIND_TRANSFER
+            record.target_amount = record.source_amount
           elsif effect.add_tag?
             record.tags << Tag.find(effect.value)
           elsif effect.change_party?
             record.party = Party.find(effect.value)
           elsif effect.change_group?
             record.group = Group.find(effect.value)
+          elsif effect.change_source_sign?
+            record.source_amount *= -1
+          elsif effect.change_target_sign?
+            record.target_amount *= -1
           elsif effect.remove_record?
             record.destroy
           end

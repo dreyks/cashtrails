@@ -3,10 +3,10 @@ FactoryBot.define do
     importer
     user
     account
-    file 'whatever'
+    file { 'whatever' }
 
     transient do
-      items_count nil
+      items_count { nil }
     end
 
     after(:create) do |session, evaluator|

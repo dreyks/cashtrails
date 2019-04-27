@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :account_group do
-    name 'My accounts'
+    name { 'My accounts' }
   end
 end

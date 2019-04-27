@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :importer_session_item do
-    transient { record_factory :record }
+    transient { record_factory { :record } }
 
     importer_session
     record { build(record_factory) }

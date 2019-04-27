@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.6.2'
 
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.3'
 # load miniprofiler before pg because otherwise sqlite queries aren't being logged
 gem 'rack-mini-profiler'
-gem 'pg', '< 1.0'
+gem 'pg', '~> 1.0'
 gem 'sqlite3'
 
 gem 'devise'
@@ -19,8 +19,6 @@ gem 'kaminari'
 
 gem 'simple_form'
 gem 'enum_help'
-
-gem 'rails-footnotes'
 
 gem 'haml-rails'
 

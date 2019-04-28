@@ -55,6 +55,8 @@ class Record < CashTrailsModel
   validates_presence_of :source_currency
   validates_presence_of :target_amount, if: :transfer?
   validates_presence_of :target_currency, if: :transfer?
+  validate :validate_amount_sign
+  validate :validate_foreign_amounts
 
   after_initialize :sanitize, if: :new_record?
   before_save :set_modification_timestamp, if: :changed?
@@ -129,9 +131,8 @@ class Record < CashTrailsModel
 
   # make both amounts negative if at least one of them is
   def fix_amount_sign
-    a1 = source_amount
-    a2 = source_foreign_amount
-    assign_attributes(source_amount: -a1.abs, source_foreign_amount: -a2.abs) if a1 && a2 && (a1 < 0 || a2 < 0)
+    return unless amount_sign_mismatch?
+    assign_attributes(source_foreign_amount: -source_foreign_amount)
   end
 
   def fix_foreign_currency
@@ -144,6 +145,24 @@ class Record < CashTrailsModel
   def fix_foreign_amount
     self.hasForeignAmount1 = true if source_foreign_amount
     self.hasForeignAmount2 = true if target_foreign_amount
+  end
+
+  def validate_amount_sign
+    return unless amount_sign_mismatch?
+
+    errors.add(:base, 'Amount signs mismatch')
+  end
+
+  def validate_foreign_amounts
+    if (source_foreign_amount && !hasForeignAmount1) || (target_foreign_amount && !hasForeignAmount2)
+      errors.add(:base, 'Foreign amounts flag mismatch')
+    end
+  end
+
+  def amount_sign_mismatch?
+    return unless source_foreign_amount
+
+    source_amount.positive? != source_foreign_amount.positive?
   end
 
   def generate_uuid

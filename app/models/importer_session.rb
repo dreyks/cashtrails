@@ -47,12 +47,14 @@ class ImporterSession < ActiveRecord::Base
     importer.call(file.path) do |record|
       yield record if block_given?
     end
-  rescue CSV::MalformedCSVError
+  rescue CSV::MalformedCSVError => e
     errors.add(:file, 'Not a CSV file')
-    nil
-  rescue KeyError # => e
+    Rails.logger.error e
+    []
+  rescue KeyError => e
     errors.add(:file, 'Header field mismatch')
-    nil
+    Rails.logger.error e
+    []
   end
 
   def validate
